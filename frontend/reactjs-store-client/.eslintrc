@@ -1,0 +1,51 @@
+{
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports",
+    "eslint-plugin-prettier",
+    "no-relative-import-paths"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "printWidth": 150
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error"
+    ],
+    "react-refresh/only-export-components": "off"
+  },
+  "ignorePatterns": [
+    "public/charting_library",
+    "src/charting_library/*.d.ts"
+  ]
+}

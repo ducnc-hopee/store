@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@theme {
+  /* colors */
+  --color-pink: #FB2E86;
+  --color-off-navy-blue: #FB2E86;
+  --color-purple: #FB2E86;
+  --color-off-blue: #151875;
+}
