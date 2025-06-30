@@ -1,12 +1,62 @@
 [
   {
     "id": "1",
-    "name": "Product 1",
-    "price": 100
+    "name": "Wireless Headphones",
+    "price": 99.99,
+    "description": "High-quality wireless headphones with noise cancellation."
   },
   {
     "id": "2",
-    "name": "Product 2",
-    "price": 200
+    "name": "Smartphone Case",
+    "price": 15.99,
+    "description": "Durable and stylish smartphone case for everyday use."
+  },
+  {
+    "id": "3",
+    "name": "Bluetooth Speaker",
+    "price": 45.5,
+    "description": "Portable Bluetooth speaker with deep bass and long battery life."
+  },
+  {
+    "id": "4",
+    "name": "Laptop Stand",
+    "price": 29.99,
+    "description": "Ergonomic aluminum stand compatible with most laptops."
+  },
+  {
+    "id": "5",
+    "name": "Gaming Mouse",
+    "price": 49.99,
+    "description": "High-precision gaming mouse with customizable buttons."
+  },
+  {
+    "id": "6",
+    "name": "Mechanical Keyboard",
+    "price": 89.0,
+    "description": "RGB backlit mechanical keyboard with blue switches."
+  },
+  {
+    "id": "7",
+    "name": "USB-C Hub",
+    "price": 34.75,
+    "description": "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader."
+  },
+  {
+    "id": "8",
+    "name": "Fitness Tracker",
+    "price": 59.99,
+    "description": "Waterproof fitness tracker with heart rate monitor and step counter."
+  },
+  {
+    "id": "9",
+    "name": "Desk Lamp",
+    "price": 22.49,
+    "description": "LED desk lamp with touch control and adjustable brightness."
+  },
+  {
+    "id": "10",
+    "name": "Portable Charger",
+    "price": 39.99,
+    "description": "10,000mAh power bank with fast charging support."
   }
 ]
