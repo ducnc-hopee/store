@@ -4,7 +4,11 @@ import Header from "./elements/Header";
 import Footer from "./elements/Footer";
 import Copyright from "./elements/Copyright";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+type TLayoutProps = {
+  children: React.ReactNode;
+};
+
+export const Layout: React.FC<TLayoutProps> = ({ children }) => {
   return (
     <div>
       <Header />

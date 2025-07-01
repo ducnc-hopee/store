@@ -1,58 +1,8 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
+import { FOOTER_ITEM } from "@/consts/footerItems";
 
-interface MenuItem {
-  title: string;
-  links: {
-    text: string;
-    url: string;
-  }[];
-}
-
-interface Footer2Props {
-  menuItems?: MenuItem[];
-  copyright?: string;
-  bottomLinks?: {
-    text: string;
-    url: string;
-  }[];
-}
-
-const Footer = ({
-  menuItems = [
-    {
-      title: "Categories",
-      links: [
-        { text: "Laptops & Computers", url: "#" },
-        { text: "Cameras & Photography", url: "#" },
-        { text: "Smart Phones & Tablets", url: "#" },
-        { text: "Video Games & Consoles", url: "#" },
-        { text: "Waterproof Headphones", url: "#" },
-      ],
-    },
-    {
-      title: "Customer Care",
-      links: [
-        { text: "My Account", url: "#" },
-        { text: "Discount", url: "#" },
-        { text: "Returns", url: "#" },
-        { text: "Orders History", url: "#" },
-        { text: "Order Tracking", url: "#" },
-      ],
-    },
-    {
-      title: "Pages",
-      links: [
-        { text: "Blog", url: "#" },
-        { text: "Browse the Shop", url: "#" },
-        { text: "Category", url: "#" },
-        { text: "Pre-Built Pages", url: "#" },
-        { text: "Visual Composer Elements", url: "#" },
-        { text: "WooCommerce Pages", url: "#" },
-      ],
-    },
-  ],
-}: Footer2Props) => {
+const Footer = () => {
   return (
     <section className="bg-off-white py-20 pl-40 h-[479px] mt-20">
       <div className="container px-6 mx-auto">
@@ -74,8 +24,8 @@ const Footer = ({
             </div>
           </div>
 
-          {menuItems.map((section, sectionIdx) => (
-            <div key={sectionIdx} className="space-y-5">
+          {FOOTER_ITEM.map((section) => (
+            <div key={section.title} className="space-y-5">
               <h3 className="text-base font-semibold text-black text-[22px]">{section.title}</h3>
               <ul className="space-y-4">
                 {section.links.map((link, linkIdx) => (
