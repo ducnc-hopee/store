@@ -1,13 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-header {
-  font-family: "Josefin Sans", sans-serif;
-}
 
 body {
   font-family: "Lato", sans-serif;
 }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
 
 @theme {
   /* colors */
@@ -22,4 +24,5 @@ body {
   --color-pantone-purple: #E0D3F5;
   --color-off-blue: #151875;
   --color-off-white: #F6F5FF;
+  --color-gray: #8A8FB9
 }
