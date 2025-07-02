@@ -36,8 +36,8 @@ export const routerConfig = createBrowserRouter([
       },
 
       {
-        path: routes.shoppingCart,
-        Component: ShoppingCart,
+        path: routes.shoppingCart, /*config*/
+        Component: ShoppingCart, /* pages*/
       },
 
             {
