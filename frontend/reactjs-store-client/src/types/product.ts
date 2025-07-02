@@ -6,5 +6,6 @@ export type TProduct = {
   category: string;
   description: string;
   image: string;
-  rating?: number;
+  rating?: string;
+  numRating: string;
 };

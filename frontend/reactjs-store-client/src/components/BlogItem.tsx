@@ -6,7 +6,6 @@ import { routes } from "@/routes/config";
 import pen from "/images/vector.svg";
 import { Icon } from "@iconify/react";
 import { useLocation } from "react-router-dom";
-import { Calendar } from "lucide-react";
 
 type TBlogProps = {
   data: TBlog;
