@@ -1,4 +1,3 @@
-
 export const brands = [
   "Coaster Furniture",
   "Fusion Dot High Fashion",
@@ -16,7 +15,7 @@ export const ratings = [
 ];
 
 export const categories = [
-  "PrestaShop",
+  "Pratashop",
   "Magneto",
   "BigCommerce",
   "osCommerce",
@@ -27,13 +26,6 @@ export const categories = [
   "Watches",
 ];
 
-export const priceFilter =[
-  "$0.00 - $150.00",
-  "$150.00 - $350.00",
-  "$150.00 - $504.00",
-  "$450.00+"
-]
-
 export const colors = [
  { name:"Blue", hex:"#5E37FF "},
  { name:"Orange", hex:"#FF9437 "},
@@ -42,18 +34,3 @@ export const colors = [
  { name:"Purple", hex:"#E248FF"},
  { name:"Sky", hex:"#26CBFF"},
 ]
-
-export const checkboxColors = {
-  rating: {
-    unchecked: "#FFF6DA",
-    checked: "#FFCC2E",
-  },
-  category: {
-    unchecked: "#FFDBF1", // light pink
-    checked: "#FF3EB2",   // dark pink
-  },
-  brand:{
-    unchecked:"#E5E0FC", //light blue
-    checked: "#603EFF", // dark blue
-  }
-};
