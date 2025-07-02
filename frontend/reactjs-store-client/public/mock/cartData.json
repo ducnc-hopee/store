@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Basic White T-Shirt",
+    "color": "White",
+    "size": "M",
+    "price": "19.99",
+    "quantity": "2",
+    "image": "/images/cartItem.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Running Shoes",
+    "color": "Black",
+    "size": "42",
+    "price": "59.99",
+    "quantity": "1",
+    "image": "/images/cartItem.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Wireless Earbuds",
+    "color": "Blue",
+    "size": "One Size",
+    "price": "89.99",
+    "quantity": "1",
+    "image": "/images/cartItem.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Denim Jacket",
+    "color": "Dark Blue",
+    "size": "L",
+    "price": "79.99",
+    "quantity": "1",
+    "image": "/images/cartItem.jpg"
+  }
+]

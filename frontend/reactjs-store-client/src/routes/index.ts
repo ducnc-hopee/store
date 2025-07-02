@@ -13,6 +13,7 @@ import Cart from '@/pages/Cart';
 import Blog from '@/pages/Blog';
 import SingleBlog from '@/pages/SingleBlog';
 import ContactUs from '@/pages/ContactUs';
+import faq from '@/pages/faq';
 
 export const routerConfig = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const routerConfig = createBrowserRouter([
       {
       path:"*",
       Component:PageNotFound,
+      },
+      {
+      path:routes.faq,
+      Component:faq,
       }
     ],
   },
