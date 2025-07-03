@@ -1,13 +1,19 @@
+import { Button } from "@/components/ui/Button";
+import page404 from "/images/404.png";
+import { Link } from "react-router-dom";
+import { routes } from "@/routes/config";
+import BrandLogo from "@/components/BrandLogo";
 
-function PageNotFound () {
+function PageNotFound() {
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-        <h1> 404 Not Found </h1>
-         <p>Oops! The page you are looking for doesn't exist.</p>
+    <div className="flex flex-col items-center justify-center mt-20">
+      <img src={page404}></img>
+      <Link to={routes.home}>
+        <Button className="w-[165px] h-[44px] mb-20">Back To Home</Button>
+      </Link>
+      <BrandLogo/>
     </div>
-  )
+  );
 }
 
-export default PageNotFound
-
-
+export default PageNotFound;

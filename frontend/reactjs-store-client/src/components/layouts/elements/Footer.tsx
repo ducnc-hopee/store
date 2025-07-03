@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
 import { FOOTER_ITEM } from "@/consts/footerItems";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,9 +31,9 @@ const Footer = () => {
               <ul className="space-y-4">
                 {section.links.map((link, linkIdx) => (
                   <li key={linkIdx}>
-                    <a href={link.url} className="hover:text-pink hover:underline transition-colors text-gray">
+                    <Link to={link.url} className="hover:text-pink hover:underline transition-colors text-gray">
                       {link.text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
