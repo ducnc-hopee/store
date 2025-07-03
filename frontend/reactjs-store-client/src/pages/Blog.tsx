@@ -1,5 +1,5 @@
 import BlogList from "@/components/BlogPage/BlogList";
-import SideBar from "@/components/BlogPage/SideBar";
+import SideBar from "@/components/BlogSideBar";
 import BrandLogo from "@/components/BrandLogo";
 import { getBlogs } from "@/services/blogs";
 import { getProducts } from "@/services/product";

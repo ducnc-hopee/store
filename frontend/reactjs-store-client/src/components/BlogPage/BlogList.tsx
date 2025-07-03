@@ -27,7 +27,7 @@ const BlogList: React.FC<TBlogListProps> = ({ data }) => {
           </TabsContent>
           <TabsContent value="3" className="">
             <div>
-              {data.slice(6, 8).map((blog) => (
+              {data.slice(6, 9).map((blog) => (
                 <BlogItem key={blog.id} data={blog} />
               ))}
             </div>

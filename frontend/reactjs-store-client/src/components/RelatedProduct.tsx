@@ -10,7 +10,7 @@ type TProductItemProps = {
 export const RelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
   return (
     <Linkable to={`/product/${data.id}`}>
-      <img className="wi-[270px] h-[300px] border border-gray-100 shadow-lg rounded-xl" src={data.image}></img>
+      <img className="w-[270px] border border-gray-100 shadow-lg rounded-xl" src={data.image}></img>
       <div className="flex flex-row items-right py-5 justify-between px-1 ">
         <h1 className="font-bold text-navy-blue text-[14px]">{data.name}</h1>
         <div className="flex text-yellow-500 w-[69px]">

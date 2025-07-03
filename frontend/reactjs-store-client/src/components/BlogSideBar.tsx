@@ -1,11 +1,12 @@
 import React from "react";
-import { Input } from "../ui/input";
+import { Input } from "./ui/input";
 import { SearchIcon } from "lucide-react";
-import { TabsTrigger, Tabs, TabsList, TabsContent } from "../ui/tabs";
+import { TabsTrigger, Tabs, TabsList, TabsContent } from "./ui/tabs";
 import type { TBlog } from "@/types/blog";
 import type { TProduct } from "@/types/product";
 import { Icon } from "@iconify/react";
-import { NavItem } from "../ui/NavItem";
+import { NavItem } from "./ui/NavItem";
+import { Linkable } from "./commons/Linkable";
 
 type TSideBarProps = {
   data: TBlog[];
@@ -75,13 +76,15 @@ const SideBar: React.FC<TSideBarProps> = ({ data, products }) => {
         <div>
           {data.slice(0, 4).map((blog) => (
             <ul>
-              <li className="flex flex-row pb-5 gap-2">
-                <img src={blog.image} className="w-[100px] h-[70px] rounded" />
-                <div>
-                  <h1 className="text-sm text-navy-blue">{blog.title}</h1>
-                  <h1 className="text-[11px] text-off-purple">{blog.date}</h1>
-                </div>
-              </li>
+              <Linkable to={`/blog/${blog.id}`}>
+                <li className="flex flex-row pb-5 gap-2" key={blog.id}>
+                  <img src={blog.image} className="w-[100px] h-[70px] rounded" />
+                  <div>
+                    <h1 className="text-sm text-navy-blue">{blog.title}</h1>
+                    <h1 className="text-[11px] text-off-purple">{blog.date}</h1>
+                  </div>
+                </li>
+              </Linkable>
             </ul>
           ))}
         </div>
@@ -91,13 +94,15 @@ const SideBar: React.FC<TSideBarProps> = ({ data, products }) => {
         <div>
           {data.slice(0, 4).map((blog) => (
             <ul>
-              <li className="flex flex-row pb-5 gap-2">
-                <img src={blog.image} className="w-[100px] h-[70px] rounded" />
-                <div>
-                  <h1 className="text-sm text-navy-blue">{blog.title}</h1>
-                  <h1 className="text-[11px] text-off-purple">{blog.date}</h1>
-                </div>
-              </li>
+              <Linkable to={`/blog/${blog.id}`}>
+                <li className="flex flex-row pb-5 gap-2" key={blog.id}>
+                  <img src={blog.image} className="w-[100px] h-[70px] rounded" />
+                  <div>
+                    <h1 className="text-sm text-navy-blue">{blog.title}</h1>
+                    <h1 className="text-[11px] text-off-purple">{blog.date}</h1>
+                  </div>
+                </li>
+              </Linkable>
             </ul>
           ))}
         </div>
@@ -107,13 +112,15 @@ const SideBar: React.FC<TSideBarProps> = ({ data, products }) => {
         <div className="grid grid-cols-2 grid-rows-2">
           {products.slice(0, 4).map((product) => (
             <ul>
-              <li className="flex flex-col pb-5 gap-2">
-                <img src={product.image} className="w-[126px] h-[80px]" />
-                <div>
-                  <h1 className="text-sm text-navy-blue text-center">{product.name}</h1>
-                  <h1 className="text-[11px] text-off-purple text-center">{product.price}</h1>
-                </div>
-              </li>
+              <Linkable to={`/product/${product.id}`}>
+                <li className="flex flex-col pb-5 gap-2" key={product.id}>
+                  <img src={product.image} className="w-[126px] h-[80px]" />
+                  <div>
+                    <h1 className="text-sm text-navy-blue text-center">{product.name}</h1>
+                    <h1 className="text-[11px] text-off-purple text-center">{product.price}</h1>
+                  </div>
+                </li>
+              </Linkable>
             </ul>
           ))}
         </div>
@@ -140,10 +147,10 @@ const SideBar: React.FC<TSideBarProps> = ({ data, products }) => {
             <h1 className="underline">General</h1>
           </NavItem>
           <NavItem isActive={true} href="#">
-           <h1 className="underline">Atsanil</h1>
+            <h1 className="underline">Atsanil</h1>
           </NavItem>
           <NavItem isActive={false} href="#">
-           <h1 className="underline">Insas.</h1>
+            <h1 className="underline">Insas.</h1>
           </NavItem>
           <NavItem isActive={false} href="#">
             <h1 className="underline">Bibsaas</h1>
