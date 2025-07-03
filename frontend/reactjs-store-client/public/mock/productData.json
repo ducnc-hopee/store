@@ -1,10 +1,112 @@
 [
   {
     "id": "1",
-    "name": "Product 1"
+    "name": "Wireless Headphones",
+    "price": 99.99,
+    "discountedPrice": 79.99,
+    "category": "Audio",
+    "description": "High-quality wireless headphones with noise cancellation.",
+    "image": "/images/chair.png",
+    "rating": "5",
+    "numRating": "243"
   },
   {
     "id": "2",
-    "name": "Product 2"
+    "name": "Smartphone Case",
+    "price": 15.99,
+    "discountedPrice": 12.99,
+    "category": "Accessories",
+    "description": "Durable and stylish smartphone case for everyday use.",
+    "image": "/images/chair.png",
+    "rating": "4",
+    "numRating": "87"
+  },
+  {
+    "id": "3",
+    "name": "Bluetooth Speaker",
+    "price": 45.5,
+    "discountedPrice": 39.99,
+    "category": "Audio",
+    "description": "Portable Bluetooth speaker with deep bass and long battery life.",
+    "image": "/images/chair.png",
+    "rating": "5",
+    "numRating": "192"
+  },
+  {
+    "id": "4",
+    "name": "Laptop Stand",
+    "price": 29.99,
+    "discountedPrice": 24.99,
+    "category": "Office",
+    "description": "Ergonomic aluminum stand compatible with most laptops.",
+    "image": "/images/chair.png",
+    "rating": "4",
+    "numRating": "110"
+  },
+  {
+    "id": "5",
+    "name": "Gaming Mouse",
+    "price": 49.99,
+    "discountedPrice": 39.99,
+    "category": "Gaming",
+    "description": "High-precision gaming mouse with customizable buttons.",
+    "image": "/images/chair.png",
+    "rating": "5",
+    "numRating": "318"
+  },
+  {
+    "id": "6",
+    "name": "Mechanical Keyboard",
+    "price": 89.0,
+    "discountedPrice": 74.99,
+    "category": "Gaming",
+    "description": "RGB backlit mechanical keyboard with blue switches.",
+    "image": "/images/chair.png",
+    "rating": "4",
+    "numRating": "167"
+  },
+  {
+    "id": "7",
+    "name": "USB-C Hub",
+    "price": 34.75,
+    "discountedPrice": 29.99,
+    "category": "Accessories",
+    "description": "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader.",
+    "image": "/images/chair.png",
+    "rating": "5",
+    "numRating": "202"
+  },
+  {
+    "id": "8",
+    "name": "Fitness Tracker",
+    "price": 59.99,
+    "discountedPrice": 49.99,
+    "category": "Wearables",
+    "description": "Waterproof fitness tracker with heart rate monitor and step counter.",
+    "image": "/images/chair.png",
+    "rating": "4",
+    "numRating": "134"
+  },
+  {
+    "id": "9",
+    "name": "Desk Lamp",
+    "price": 22.49,
+    "discountedPrice": 18.99,
+    "category": "Home",
+    "description": "LED desk lamp with touch control and adjustable brightness.",
+    "image": "/images/chair.png",
+    "rating": "4",
+    "numRating": "76"
+  },
+  {
+    "id": "10",
+    "name": "Portable Charger",
+    "price": 39.99,
+    "discountedPrice": 32.99,
+    "category": "Power",
+    "description": "10,000mAh power bank with fast charging support.",
+    "image": "/images/chair.png",
+    "rating": "5",
+    "numRating": "289"
   }
 ]

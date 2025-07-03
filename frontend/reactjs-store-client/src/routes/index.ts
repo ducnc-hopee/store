@@ -6,12 +6,14 @@ import { AppLayout } from "../components/layouts/AppLayout";
 import Product from "../pages/Product";
 import { routes } from "./config";
 import ProductDetail from "../pages/ProductDetail";
-import ShoppingCart from "../pages/ShoppingCart";
 import OrderCompleted from '@/pages/OrderCompleted';
-import BlogPage from '@/pages/BlogPage';
-import ContactUs from '@/pages/ContactUs';
 import PageNotFound from '@/pages/PageNotFound';
 import AboutUs from '@/pages/AboutUs';
+import Cart from '@/pages/Cart';
+import Blog from '@/pages/Blog';
+import SingleBlog from '@/pages/SingleBlog';
+import ContactUs from '@/pages/ContactUs';
+import faq from '@/pages/faq';
 
 export const routerConfig = createBrowserRouter([
   {
@@ -36,41 +38,45 @@ export const routerConfig = createBrowserRouter([
       },
 
       {
-        path: routes.shoppingCart,
-        Component: ShoppingCart,
+        path: routes.cart,
+        Component: Cart,
       },
 
             {
-        path: routes.orderCompleted,
+        path: routes.orderStatus,
         Component: OrderCompleted,
       },
 
       {
-        path: routes.loginPage,
+        path: routes.account,
         Component: LoginPage,
       },
       {
-      path: routes.blogPage,
-      Component: BlogPage,
+      path: routes.blog,
+      Component: Blog,
       },
 
       {
       path: routes.singleBlog,
-      Component: BlogPage,
+      Component: SingleBlog,
       },
 
       {
-      path: routes.aboutUs,
+      path: routes.about,
       Component:AboutUs,
       },
 
       {
-      path: routes.contactUs,
-      Component: ContactUs
+      path: routes.contact,
+      Component: ContactUs,
       },
       {
       path:"*",
       Component:PageNotFound,
+      },
+      {
+      path:routes.faq,
+      Component:faq,
       }
     ],
   },

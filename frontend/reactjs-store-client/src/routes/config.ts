@@ -3,14 +3,13 @@ export const routes = {
   home: "/",
   product: "/product",
   productDetail: "/product/:id",
-  shoppingCart:"/cart",
-  orderCompleted:"/orders",
-  loginPage:"/login",
-  blogPage: "/blog",
-  singleBlog:"/singleBlog",
-  aboutUs:"/about",
-  contactUs:"/contact",
-  pageNotFound:"/pageNotFound",
-  FAQ: "/FAQ "
+  cart: "/cart",
+  orderStatus: "/order-status",
+  account: "/account",
+  blog: "/blog",
+  singleBlog: "/blog/:id",
+  about: "/about",
+  contact: "/contact",
+  notFound: "*",
+  faq: "/faq",
 };
-

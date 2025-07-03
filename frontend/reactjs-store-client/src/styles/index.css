@@ -2,15 +2,25 @@
 @import "tw-animate-css";
 
 body {
+  font-family: "Lato", sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
   font-family: "Josefin Sans", sans-serif;
 }
 
 @theme {
   /* colors */
   --color-pink: #FB2E86;
-  --color-off-navy-blue: #FB2E86;
-  --color-purple: #FB2E86;
+  --color-off-navy-blue: #3F509E;
+  --color-purple: #7E33E0;
+  --color-navy-blue: #151875;
+  --color-off-purple: #9F63B5;
+  --color-red: #FB2448;
+  --color-blue: #2F1AC4;
+  --color-sky-blue:#F3F9FF;
+  --color-pantone-purple: #E0D3F5;
   --color-off-blue: #151875;
-  --color-rating-yellow: #FFCC2E;
-  
+  --color-off-white: #F6F5FF;
+  --color-gray: #8A8FB9
 }
