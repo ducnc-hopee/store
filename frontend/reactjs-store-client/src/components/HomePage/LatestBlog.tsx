@@ -5,7 +5,7 @@ type TBlogListProps = {
   data: TBlog[];
 };
 
-export const BlogList: React.FC<TBlogListProps> = ({ data }) => {
+export const LatestBlog: React.FC<TBlogListProps> = ({ data }) => {
   return (
     <div className="flex flex-col items-center justify-center mt-10 px-4">
       <div className="text-navy-blue text-[42px] font-bold mb-6">
@@ -19,4 +19,4 @@ export const BlogList: React.FC<TBlogListProps> = ({ data }) => {
     </div>
   );
 };
-export default BlogList;
+export default LatestBlog;

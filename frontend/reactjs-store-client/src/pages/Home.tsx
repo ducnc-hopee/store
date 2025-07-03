@@ -3,10 +3,10 @@ import HomeBanner from "@/components/HomePage/HomeBanner";
 import { getProducts } from "@/services/product";
 import type { TProduct } from "@/types/product";
 import { useEffect, useState } from "react";
-import BlogList from "@/components/HomePage/BlogList";
 import HomeProducts from "@/components/HomePage/HomeProducts";
 import { getBlogs } from "@/services/blogs";
 import type { TBlog } from "@/types/blog";
+import LatestBlog from "@/components/HomePage/LatestBlog";
 
 const Home = () => {
   const [data, setData] = useState<TProduct[]>([]);
@@ -24,7 +24,7 @@ const Home = () => {
       <HomeBanner />
       <HomeProducts data={data} />
       <Categories />
-      <BlogList data={dataBlog} />
+      <LatestBlog data={dataBlog} />
     </div>
   );
 };

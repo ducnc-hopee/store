@@ -5,7 +5,7 @@ import { getProduct, getProducts } from "@/services/product";
 import type { TProduct } from "@/types/product";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import brand from "/images/brand.png";
+import BrandLogo from "@/components/BrandLogo";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -26,9 +26,7 @@ function ProductDetail() {
       <ProductDetails data={data} />
       <MoreDetails data={data} />
       <RelatedProducts data={relatedProducts} />
-      <div className="flex flex-row items-center justify-center">
-        <img src={brand} alt="brands" />
-      </div>
+      <BrandLogo/>
     </div>
   );
 }

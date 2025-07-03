@@ -4,7 +4,7 @@
         "author": "Jane Doe",
         "title": "The Future of Remote Work",
         "description": "Exploring how remote work is reshaping productivity, collaboration, and work-life balance in the modern era.",
-        "date": "2025-06-01",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -12,7 +12,7 @@
         "author": "Samuel Lee",
         "title": "Top 10 UI/UX Design Trends in 2025",
         "description": "A deep dive into the latest design practices and innovations that are transforming user experiences across digital platforms.",
-        "date": "2025-06-10",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -20,7 +20,7 @@
         "author": "Emily Zhang",
         "title": "Why Microservices Are Still Relevant",
         "description": "An overview of microservices architecture and why it's still a dominant choice for scalable application development.",
-        "date": "2025-06-15",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -28,7 +28,7 @@
         "author": "David Kim",
         "title": "Mastering TypeScript in React Projects",
         "description": "Practical strategies and tips for integrating TypeScript into modern React applications for robust, type-safe code.",
-        "date": "2025-06-20",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -36,7 +36,7 @@
         "author": "Ayesha Tan",
         "title": "Sustainable Tech: Innovations That Matter",
         "description": "Highlighting groundbreaking technologies that prioritize sustainability and environmental responsibility.",
-        "date": "2025-06-25",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -44,7 +44,7 @@
         "author": "Carlos Mendoza",
         "title": "Understanding Web Accessibility",
         "description": "Learn how to build inclusive websites that meet WCAG standards and provide a better user experience for all.",
-        "date": "2025-06-28",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -52,7 +52,7 @@
         "author": "Nina Patel",
         "title": "The Rise of AI-Generated Content",
         "description": "Examining the pros, cons, and ethical questions surrounding AI-generated text and media in 2025.",
-        "date": "2025-07-01",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -60,7 +60,7 @@
         "author": "Liam Thompson",
         "title": "Cloud Cost Optimization: What You Need to Know",
         "description": "Best practices and tools to help companies manage cloud infrastructure costs effectively.",
-        "date": "2025-07-03",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -68,7 +68,7 @@
         "author": "Sara Lim",
         "title": "GraphQL vs REST: Which Should You Use?",
         "description": "Breaking down the differences between GraphQL and REST and when to choose one over the other.",
-        "date": "2025-07-05",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     },
     {
@@ -76,7 +76,7 @@
         "author": "Omar Farouk",
         "title": "Introduction to Edge Computing",
         "description": "An introduction to edge computing, its benefits, and how it's powering real-time data processing in IoT.",
-        "date": "2025-07-07",
+        "date": "Aug 09 2020",
         "image": "/images/blog-1.jpg"
     }
 ]
