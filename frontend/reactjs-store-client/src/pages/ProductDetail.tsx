@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BrandLogo from "@/components/BrandLogo";
 
+
 function ProductDetail() {
   const { id } = useParams();
   const [data, setData] = useState<TProduct | null>(null);
