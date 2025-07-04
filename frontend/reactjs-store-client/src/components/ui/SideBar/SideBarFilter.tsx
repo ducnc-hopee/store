@@ -1,5 +1,5 @@
 import { AiFillStar, AiOutlineStar,AiOutlineCheck } from "react-icons/ai";
-import { brands, ratings, categories, colors} from "./const";
+import { brands, ratings, categories, colors} from "./Const";
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => {
   return <h3 className="text-base font-bold pb-3 underline text-[color:var(--color-off-blue)]">{children}</h3>;

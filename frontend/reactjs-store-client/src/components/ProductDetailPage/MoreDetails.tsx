@@ -78,21 +78,27 @@ const MoreDetails: React.FC<TProductDetailsProps> = ({ data }) => {
               <h1 className="text-[22px] font-semibold pb-3">More details</h1>
               <div className="flex flex-col">
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
@@ -110,21 +116,27 @@ const MoreDetails: React.FC<TProductDetailsProps> = ({ data }) => {
               <h1 className="text-[22px] font-semibold pb-3">More details</h1>
               <div className="flex flex-col">
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
@@ -142,21 +154,27 @@ const MoreDetails: React.FC<TProductDetailsProps> = ({ data }) => {
               <h1 className="text-[22px] font-semibold pb-3">More details</h1>
               <div className="flex flex-col">
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .
                   </h1>
                 </div>
                 <div className="flex flex-row">
-                  <h1>button</h1>
+                  <Button variant="ghost">
+                    <Icon icon="akar-icons:arrow-up" className="rotate-90 w-[14px] h-[16px]" />
+                  </Button>
                   <h1>
                     Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
                     nunc nec. Dui, massa viverr .

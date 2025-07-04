@@ -33,8 +33,10 @@ function SingleBlog() {
     <div>
       <div className="grid grid-cols-10 gap-4 mx-55 mt-30">
         <div className="col-span-7">
-          <BlogDetails blog={blog} products={products} blogs={blogs}/>
-          <CommentForm />
+          <BlogDetails blog={blog} products={products} blogs={blogs} />
+          <div className="pr-15">
+            <CommentForm />
+          </div>
         </div>
         <div className="col-span-3 ml-10">
           <SideBar data={blogs} products={products} />

@@ -15,6 +15,7 @@ import SingleBlog from '@/pages/SingleBlog';
 import ContactUs from '@/pages/ContactUs';
 import faq from '@/pages/faq';
 
+
 export const routerConfig = createBrowserRouter([
   {
     Component: HomeLayout,

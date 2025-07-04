@@ -17,7 +17,8 @@ export const FOOTER_ITEM = [
         { text: "Returns", url: "#" },
         { text: "Orders History", url: "#" },
         { text: "Order Tracking", url: "#" },
-        { text: "About Us", url:"about"}
+        { text: "About Us", url:"about"},
+        { text: "Questions", url:"faq"}
       ],
     },
     {

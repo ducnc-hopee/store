@@ -13,8 +13,8 @@ export const Banner = () => {
   const isSingleBlog = useMatch(routes.singleBlog);
   const isAbout = useMatch(routes.about);
   const isContact = useMatch(routes.contact);
-  const isNotFound = useMatch(routes.notFound);
   const isFaq = useMatch(routes.faq);
+  const isNotFound = useMatch(routes.notFound);
 
   const bannerName = useMemo(() => {
     if (isProduct) return routeNames.product;
@@ -26,8 +26,8 @@ export const Banner = () => {
     if (isSingleBlog) return routeNames.singleBlog;
     if (isAbout) return routeNames.about;
     if (isContact) return routeNames.contact;
-    if (isNotFound) return routeNames.notFound;
     if (isFaq) return routeNames.faq;
+    if (isNotFound) return routeNames.notFound;
     return "";
   }, [isProduct, isProductDetail, isCart, isOrderStatus, isAccount, isBlog, isSingleBlog, isAbout, isContact, isNotFound, isFaq]);
 

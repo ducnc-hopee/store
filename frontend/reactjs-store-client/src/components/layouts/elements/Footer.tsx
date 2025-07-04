@@ -31,7 +31,7 @@ const Footer = () => {
               <ul className="space-y-4">
                 {section.links.map((link, linkIdx) => (
                   <li key={linkIdx}>
-                    <Link to={link.url} className="hover:text-pink hover:underline transition-colors text-gray">
+                    <Link to={link.url} className="hover:text-pink hover:underline transition-colors text-gray ">
                       {link.text}
                     </Link>
                   </li>

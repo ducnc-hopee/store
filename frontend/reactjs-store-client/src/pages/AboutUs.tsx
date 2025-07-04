@@ -3,7 +3,6 @@ import about from "/images/aboutUs.jpg";
 import { Link } from "react-router-dom";
 import { routes } from "@/routes/config";
 import { Icon } from "@iconify/react";
-import client from "/images/client.jpg";
 import { useState } from "react";
 import { clientReviews } from "@/consts/reviews";
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
@@ -73,7 +72,7 @@ function AboutUs() {
           <p className="text-center w-full px-20 py-5 font-bold text-gray max-w-[700px]">{clientReviews[activeReview]?.review}</p>
         </div>
         <div>
-          <Tabs value={String(activeReview)}>
+          <Tabs value="1">
             <TabsList className="gap-x-2 flex">
               <TabsTrigger
                 value="0"

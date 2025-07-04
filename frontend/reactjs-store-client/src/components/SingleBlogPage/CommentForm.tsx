@@ -22,7 +22,8 @@ function CommentForm() {
   });
 
   const onSubmit = (data: FormValues) => {
-    alert(JSON.stringify(data, null, 2));
+    JSON.stringify(data, null);
+    console.log(data);
   };
 
   return (
@@ -81,8 +82,7 @@ function CommentForm() {
                 <textarea
                   {...field}
                   placeholder="💬 Write your comment*"
-                  rows={5}
-                  className="w-full p-2 border-2 rounded border-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                  className="w-full h-[200px] text-sm placeholder-gray border-2 border-gray rounded px-3 py-2 resize-none focus-visible:ring-0 focus-visible:outline-none"
                 />
               </FormControl>
               <FormMessage />
@@ -95,11 +95,13 @@ function CommentForm() {
             onClick={() => setChecked(!checked)}
             className={`w-[14px] h-[14px] border-2 ${checked ? "bg-pink text-white border-pink" : "bg-white border-gray"}`}
           >
-            {checked&& <Check className="w-[10px] h-[10px] text-white"/>}
+            {checked && <Check className="w-[10px] h-[10px] text-white" />}
           </button>
           <p className="text-gray text-[13px]">Save my name, email, and website in this browser for the next time I comment.</p>
         </div>
-        <Button type="submit" className="w-full">Post Comment</Button>
+        <Button type="submit" className="w-full">
+          Post Comment
+        </Button>
       </form>
     </Form>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import type { TCartItem } from "@/types/cartItem";
 import { Icon } from "@iconify/react";
 import { Button } from "../ui/Button";
+import { Link } from "react-router-dom";
 
 type TCartTotalsProps = {
   data: TCartItem[];
@@ -45,9 +46,11 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ data }) => {
           <h1 className="text-gray text-[12px]">Shipping & taxes calculated at checkout</h1>
         </div>
         <div className="flex flex-col justify-center items-center pb-5 mx-5">
-          <Button className="bg-green-500 w-full">
-            <span>Proceed to checkout</span>
-          </Button>
+          <Link to="/orderStatus" className="w-full">
+            <Button className="bg-green-500 w-full">
+              <span>Proceed to checkout</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

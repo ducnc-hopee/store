@@ -21,7 +21,7 @@ function Blog() {
 
   return (
     <div>
-      <div className="grid grid-cols-10 gap-4 mx-55 mt-30">
+      <div className="grid grid-cols-10 gap-4 mx-55 mt-20">
         <div className="col-span-7">
           <BlogList data={blogs} />
         </div>
