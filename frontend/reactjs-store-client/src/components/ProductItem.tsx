@@ -4,6 +4,7 @@ import { Linkable } from "./commons/Linkable";
 
 type TProductItemProps = {
   data: TProduct;
+  viewType: "grid" | "list";
 };
 
 export const ProductItem: React.FC<TProductItemProps> = ({ data }) => {
