@@ -1,14 +1,17 @@
-import React from 'react'
-import { Navbar } from './elements/Navbar'
+import React from "react";
+import { Navbar } from "./elements/Navbar";
+import Header from "./elements/Header";
+import Footer from "./elements/Footer";
+import Copyright from "./elements/Copyright";
 
-export const Layout = ({children}: {children: React.ReactNode}) => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <p>Header</p>
+      <Header />
       <Navbar />
       {children}
-      <footer>footer</footer>
-      <p>copyright</p>
+      <Footer />
+      <Copyright />
     </div>
-  )
-}
+  );
+};

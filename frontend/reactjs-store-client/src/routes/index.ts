@@ -5,6 +5,9 @@ import { AppLayout } from "../components/layouts/AppLayout";
 import Product from "../pages/Product";
 import { routes } from "./config";
 import ProductDetail from "../pages/ProductDetail";
+import Contact from "../pages/Contact";
+import Blog from "@/pages/Blog";
+import Cart from "@/pages/Cart";
 
 export const routerConfig = createBrowserRouter([
   {
@@ -26,6 +29,18 @@ export const routerConfig = createBrowserRouter([
       {
         path: routes.productDetail,
         Component: ProductDetail,
+      },
+      {
+        path: routes.blog,
+        Component: Blog,
+      },
+      {
+        path: routes.contact,
+        Component: Contact,
+      },
+      {
+        path: routes.cart,
+        Component: Cart,
       },
     ],
   },
