@@ -1,9 +1,9 @@
-import { Categories } from "./components/Catagories";
-import { Ratings } from "./components/Ratings";
-import { ProductBrands } from "./components/ProductBrand";
 import { colors } from "./Const";
 import SectionTitle from "./SectionTitle";
+import { Categories } from "./components/Catagories";
 import { PriceFilter } from "./components/PriceFilter";
+import { ProductBrands } from "./components/ProductBrand";
+import { Ratings } from "./components/Ratings";
 
 
 const SidebarFilter = () => {
