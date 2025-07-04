@@ -12,6 +12,9 @@ import BlogPage from '@/pages/BlogPage';
 import ContactUs from '@/pages/ContactUs';
 import PageNotFound from '@/pages/PageNotFound';
 import AboutUs from '@/pages/AboutUs';
+import Contact from "../pages/Contact";
+import Blog from "@/pages/Blog";
+import Cart from "@/pages/Cart";
 
 export const routerConfig = createBrowserRouter([
   {
@@ -36,21 +39,21 @@ export const routerConfig = createBrowserRouter([
       },
 
       {
-        path: routes.shoppingCart, /*config*/
+        path: routes.cart, /*config*/
         Component: ShoppingCart, /* pages*/
       },
 
             {
-        path: routes.orderCompleted,
+        path: routes.orderStatus,
         Component: OrderCompleted,
       },
 
       {
-        path: routes.loginPage,
+        path: routes.account,
         Component: LoginPage,
       },
       {
-      path: routes.blogPage,
+      path: routes.blog,
       Component: BlogPage,
       },
 
@@ -60,18 +63,30 @@ export const routerConfig = createBrowserRouter([
       },
 
       {
-      path: routes.aboutUs,
+      path: routes.about,
       Component:AboutUs,
       },
 
       {
-      path: routes.contactUs,
+      path: routes.contact,
       Component: ContactUs
       },
       {
       path:"*",
       Component:PageNotFound,
-      }
+      },
+      {
+        path: routes.blog,
+        Component: Blog,
+      },
+      {
+        path: routes.contact,
+        Component: Contact,
+      },
+      {
+        path: routes.cart,
+        Component: Cart,
+      },
     ],
   },
 ]);

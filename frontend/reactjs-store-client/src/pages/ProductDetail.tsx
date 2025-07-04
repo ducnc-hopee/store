@@ -13,7 +13,7 @@ const ProductDetail = () => {
     }
   }, [id]);
 
-  return <div>{data?.name}</div>;
+  return <div>{data?.name} - {data?.price}</div>;
 };
 
 export default ProductDetail;

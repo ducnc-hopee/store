@@ -3,4 +3,6 @@ export type TProduct = {
   name: string;
   image: string;
   rating?: number;
+  price: number;
+  description: string;
 };
