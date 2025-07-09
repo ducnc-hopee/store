@@ -225,13 +225,13 @@ function LoginPage() {
                   rules={{ required: "Username is required" }}
                   render={({ field }) => (
                     <FormItem>
-                      <div className="flex flex-row border-2 rounded border-gray items-center gap-2 px-2">
+                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[23px] h-[52px]">
                         <FormControl>
                           <Input
                             type="text"
                             placeholder="Username"
                             {...field}
-                            className="h-[52px] border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                            className="h-[19px] border-none shadow-none text-[16px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                           />
                         </FormControl>
                       </div>
@@ -251,7 +251,7 @@ function LoginPage() {
                             type="password"
                             placeholder="Password"
                             {...field}
-                            className="h-[52px] border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                            className="h-[19px] border-none shadow-none text-[16px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                           />
                         </FormControl>
                       </div>
@@ -259,15 +259,18 @@ function LoginPage() {
                     </FormItem>
                   )}
                 />
-                <Button variant="ghost" className="flex flex-row justify-start p-0 hover:text-navy-blue text-gray text-[17px]">
+                <Button variant="ghost" className="h-[20px] flex flex-row justify-start p-0 hover:text-navy-blue text-gray text-[17px]">
                   Forgot your password?
                 </Button>
 
-                <Button type="submit" className="w-full h-[47px] font-bold">
+                <Button type="submit" className="w-full h-[47px] font-bold mb-[28px] ">
                   Sign in
                 </Button>
 
-                <Button variant="ghost" className="w-full flex flex-row items-center justify-center p-0 hover:text-navy-blue text-gray text-[17px]">
+                <Button
+                  variant="ghost"
+                  className="h-[20px] w-full flex flex-row items-center justify-center p-0 hover:text-navy-blue text-gray text-[17px] mb-[50px]"
+                >
                   <Link to="/createAccount">Don’t have an Account? Create account</Link>
                 </Button>
               </form>

@@ -43,7 +43,7 @@ const BlogList: React.FC<TBlogListProps> = ({ data }) => {
               ))}
             </div>
           </TabsContent>
-          <TabsList className="py-5 gap-5 flex items-center justify-center">
+          <TabsList className="w-[236px] h-[24px] ml-[317px] gap-[36px] flex items-center justify-center">
             <TabsTrigger
               value="1"
               className=" cursor-pointer w-[32px] h-[24px] rounded font-semibold border border-pantone-purple text-pantone-purple data-[state=active]:bg-pink data-[state=active]:text-white"

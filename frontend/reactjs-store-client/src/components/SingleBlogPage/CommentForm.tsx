@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/Button";
-import { Check, Mail, User } from "lucide-react";
+import { Check, Mail, MessageCircle, User } from "lucide-react";
 
 type FormValues = {
   name: string;
@@ -28,21 +28,21 @@ function CommentForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-2 w-full gap-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-[717px]">
+        <div className="grid grid-cols-2 gap-x-[33.7px] mb-[45px]">
           <FormField
             control={form.control}
             name="name"
             rules={{ required: "Name is required" }}
             render={({ field }) => (
               <FormItem>
-                <div className="flex flex-row border-2 rounded border-gray items-center gap-2 px-2">
+                <div className="flex flex-row border-2 rounded-[1px] border-gray items-center gap-[5.6px] pl-[9px]">
                   <User className="w-[15px] h-[15px]" color="gray" />
                   <FormControl>
                     <Input
                       placeholder="Your Name*"
                       {...field}
-                      className="border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                      className="border-none shadow-none text-[15px] p-0 placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                     />
                   </FormControl>
                 </div>
@@ -56,14 +56,14 @@ function CommentForm() {
             rules={{ required: "Email is required" }}
             render={({ field }) => (
               <FormItem>
-                <div className="flex flex-row border-2 rounded border-gray items-center gap-2 px-2">
+                <div className="flex flex-row border-2 rounded-[1px] border-gray items-center gap-2 px-2">
                   <Mail className="w-[15px] h-[15px]" color="gray" />
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="Write Your Email*"
                       {...field}
-                      className="border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                      className="border-none shadow-none text-[15px] p-0 placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                     />
                   </FormControl>
                 </div>
@@ -79,28 +79,32 @@ function CommentForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <textarea
-                  {...field}
-                  placeholder="💬 Write your comment*"
-                  className="w-full h-[200px] text-sm placeholder-gray border-2 border-gray rounded px-3 py-2 resize-none focus-visible:ring-0 focus-visible:outline-none"
-                />
+                <div className="relative">
+                  <MessageCircle className="absolute top-[24.7px] left-[20px] w-[13.5px] h-[13.5px] text-gray fill-gray pointer-events-none" />
+                  <textarea
+                    {...field}
+                    placeholder="Write your comment*"
+                    className="w-full h-[206px] text-sm placeholder-gray border-2 border-gray rounded-[1px] pl-[40px] pt-[21.3px] resize-none focus-visible:ring-0 focus-visible:outline-none"
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className="flex flex-row gap-2 items-center ">
+
+        <div className="flex flex-row  mt-[22px] items-center ">
           <button
             type="button"
             onClick={() => setChecked(!checked)}
-            className={`w-[14px] h-[14px] border-2 ${checked ? "bg-pink text-white border-pink" : "bg-white border-gray"}`}
+            className={`rounded-[1px] w-[13px] h-[13px] border-1 mr-[5.6px] ${checked ? "bg-pink text-white border-pink" : "bg-white border-gray"}`}
           >
-            {checked && <Check className="w-[10px] h-[10px] text-white" />}
+            {checked && <Check className="w-[9px] h-[9px] text-white" />}
           </button>
           <p className="text-gray text-[13px]">Save my name, email, and website in this browser for the next time I comment.</p>
         </div>
-        <Button type="submit" className="w-full">
-          Post Comment
+        <Button type="submit" className="w-full mt-[46px] h-[50px]">
+          <h1 className="font-semibold text-[18px]">Post Comment</h1>
         </Button>
       </form>
     </Form>

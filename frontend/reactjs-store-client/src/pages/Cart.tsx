@@ -14,11 +14,11 @@ function Cart() {
 
   return (
     <div>
-      <div className="flex flex-row pl-55">
+      <div className="flex flex-row pl-[375px] pt-[131px]">
         <div>
         <CartList data={data} />
         </div>
-        <div className="py-20 pr-20">
+        <div className="ml-[95px] mb-[145px]">
           <CartTotals data={data} />
           <CalculateShipping />
         </div>

@@ -10,10 +10,14 @@ type TProductItemProps = {
 export const RelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
   return (
     <Linkable to={`/product/${data.id}`}>
-      <img className="w-[270px] border border-gray-100 shadow-lg rounded-xl" src={data.image}></img>
-      <div className="flex flex-row items-right py-5 justify-between px-1 ">
-        <h1 className="font-bold text-navy-blue text-[14px]">{data.name}</h1>
-        <div className="flex text-yellow-500 w-[69px]">
+      <img className="w-[209px] h-[254px] border border-gray-100 shadow-lg mb-[15px]" src={data.image}></img>
+      <div className=" ">
+        <h1 className="font-bold text-black text-[14px] ml-[23px] mb-[16.2px]">{data.name}</h1>
+      </div>
+      <div className="flex flex-row ml-[13.8px]">
+        <h1 className="h-[13.8px] w-[44px] text-navy-blue">${data.price}</h1>
+        <h1 className="h-[13.8px] line-through text-pink ml-[9.26px]">${data.discountedPrice}</h1>
+        <div className="h-[13.8px] flex text-yellow-500 w-[66px] ml-[18.5px]">
           {[...Array(Number(data.rating))].map((_, i) => (
             <AiFillStar key={`fill-${i}`} />
           ))}
@@ -21,10 +25,6 @@ export const RelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
             <AiOutlineStar key={`empty-${i}`} className="text-gray-300" />
           ))}
         </div>
-      </div>
-      <div className="flex justify-between gap-10 pt-2">
-        <h1>${data.price}</h1>
-        <h1 className="line-through text-pink">${data.discountedPrice}</h1>
       </div>
     </Linkable>
   );

@@ -5,9 +5,9 @@ import Category from "./Category";
 function Categories() {
   return (
     <div>
-      <div className="flex flex-col items-center justify-start pt-12 bg-[url('/images/bg.jpg')] bg-cover bg-center h-[751px]">
-        <h1 className="font-bold text-[42px] text-navy-blue">Top Categories</h1>
-        <div className="grid grid-rows-1 grid-cols-6 gap-3">
+      <div className="flex flex-col items-center justify-start pt-[35px] bg-[url('/images/bg.jpg')] bg-cover bg-center h-[1051px]">
+        <h1 className="font-bold text-[43px] mb-[18px] text-navy-blue">Top Categories</h1>
+        <div className="mx-[170px] grid grid-rows-1 grid-cols-6 gap-x-[12px]">
           <Category />
           <Category />  
           <Category />
@@ -16,15 +16,15 @@ function Categories() {
           <Category />
         </div>
         <Tabs defaultValue="1">
-          <TabsList className="flex gap-3 z-20 bg-transparent shadow-none p-0">
-            <TabsTrigger value={"1"} className="w-4 h-4 flex items-center justify-center p-0 group">
-              <div className="w-3 h-3 border rounded-2xl border-pink bg-transparent group-data-[state=active]:bg-pink" />
+          <TabsList className="flex gap-[20px] z-20 bg-transparent shadow-none p-0 mt-[32px] w-[66px] h-[14px]">
+            <TabsTrigger value={"1"} className="flex items-center justify-center p-0 group">
+              <div className="w-3 h-3 border rounded-full border-pink bg-transparent group-data-[state=active]:bg-pink" />
             </TabsTrigger>
-            <TabsTrigger value={"2"} className="w-4 h-4 flex items-center justify-center p-0 transition-all group">
-              <div className="w-3 h-3 border rounded-2xl border-pink bg-transparent group-data-[state=active]:bg-pink" />
+            <TabsTrigger value={"2"} className=" flex items-center justify-center p-0 transition-all group">
+              <div className="w-3 h-3 border rounded-full border-pink bg-transparent group-data-[state=active]:bg-pink" />
             </TabsTrigger>
-            <TabsTrigger value={"3"} className="w-4 h-4 flex items-center justify-center p-0 transition-all group">
-              <div className="w-3 h-3 border rounded-2xl border-pink bg-transparent group-data-[state=active]:bg-pink" />
+            <TabsTrigger value={"3"} className=" flex items-center justify-center p-0 transition-all group">
+              <div className="w-3 h-3 border rounded-full border-pink bg-transparent group-data-[state=active]:bg-pink" />
             </TabsTrigger>
           </TabsList>
         </Tabs>

@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div>
       <HomeBanner />
-      <HomeProducts data={data} />
+      <HomeProducts data={data}/>
       <Categories />
       <LatestBlog data={dataBlog} />
     </div>
