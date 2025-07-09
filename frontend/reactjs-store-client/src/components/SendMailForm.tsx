@@ -26,8 +26,8 @@ function SendMailForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-2xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className=" w-[534px] ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[24px] mb-[34px]">
           <FormField
             control={form.control}
             name="name"
@@ -38,7 +38,7 @@ function SendMailForm() {
                   <Input
                     placeholder="Your Name*"
                     {...field}
-                    className=" placeholder-gray border-2 border-gray rounded px-3 py-5 focus-visible:ring-0 focus-visible:outline-none"
+                    className=" placeholder-gray border-1 w-[255px] h-[45px] border-gray rounded-[3px] px-3 py-5 focus-visible:ring-0 focus-visible:outline-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -56,7 +56,7 @@ function SendMailForm() {
                     type="email"
                     placeholder="Your Email*"
                     {...field}
-                    className=" placeholder-gray border-2 border-gray rounded px-3 py-5 focus-visible:ring-0 focus-visible:outline-none"
+                    className=" placeholder-gray border-1 w-[255px] h-[45px] border-gray rounded-[3px] px-3 py-5 focus-visible:ring-0 focus-visible:outline-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -75,7 +75,7 @@ function SendMailForm() {
                 <Input
                   placeholder="Subject*"
                   {...field}
-                  className=" placeholder-gray border-2 border-gray rounded px-3 py-5 focus-visible:ring-0 focus-visible:outline-none"
+                  className=" placeholder-gray border-1 border-gray h-[45px] rounded-[3px] px-3 py-5 focus-visible:ring-0 focus-visible:outline-none mb-[47px]"
                 />
               </FormControl>
               <FormMessage />
@@ -93,7 +93,7 @@ function SendMailForm() {
                 <textarea
                   {...field}
                   placeholder="Type Your Message*"
-                  className="w-full h-[160px] text-sm placeholder-gray border-2 border-gray rounded px-3 py-2 resize-none focus-visible:ring-0 focus-visible:outline-none"
+                  className="w-full h-[166px] mb-[33px] text-sm placeholder-gray border-1 border-gray rounded-[3px] px-3 py-2 resize-none focus-visible:ring-0 focus-visible:outline-none"
                 />
               </FormControl>
               <FormMessage />
@@ -101,7 +101,7 @@ function SendMailForm() {
           )}
         />
 
-        <Button type="submit" className="w-[157px] h-11 text-white bg-pink hover:bg-navy-blue transition">
+        <Button type="submit" className="w-[157px] h-[44px] mb-[326px] text-white bg-pink hover:bg-navy-blue transition">
           Send Mail
         </Button>
       </form>

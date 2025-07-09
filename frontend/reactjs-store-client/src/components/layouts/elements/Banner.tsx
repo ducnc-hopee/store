@@ -32,7 +32,7 @@ export const Banner = () => {
   }, [isProduct, isProductDetail, isCart, isOrderStatus, isAccount, isBlog, isSingleBlog, isAbout, isContact, isNotFound, isFaq]);
 
   return (
-    <div className="w-full h-[286px] bg-off-white flex items-center justify-start px-58 py-10">
+    <div className="w-full h-[286px] bg-off-white flex items-center justify-start pl-[375px]">
       <div>
         <h1 className="text-[36px] font-bold text-navy-blue mb-3">{bannerName}</h1>
         <div className="flex items-center justify-start space-x-1 text-[16px] text-black">

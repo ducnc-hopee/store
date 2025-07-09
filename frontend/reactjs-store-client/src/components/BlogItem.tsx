@@ -1,43 +1,38 @@
 import React from "react";
 import { Linkable } from "./commons/Linkable";
 import type { TBlog } from "@/types/blog";
-import { NavItem } from "./ui/NavItem";
-import { routes } from "@/routes/config";
 import pen from "/images/vector.svg";
 import { Icon } from "@iconify/react";
-import { useLocation } from "react-router-dom";
 
 type TBlogProps = {
   data: TBlog;
 };
 
 export const BlogItem: React.FC<TBlogProps> = ({ data }) => {
-  const { pathname } = useLocation();
   return (
-    <Linkable to={`/blog/${data.id}`}>
-      <div className="rounded-2xl shadow-lg hover:shadow-xl">
-        <img className="bg-off-white rounded-2xl" src={data.image} />
-        <div className="flex flex-col justify-start items-start p-5">
-          <div className="flex flex-row justify-between w-full">
-            <div className="flex flex-row gap-1">
-              <img src={pen} alt="pen" />
-              <h1 className="text-navy-blue">{data.author}</h1>
+    <Linkable to={`/blog/${data.id}`} className="group block">
+      <div className="rounded-[5px] shadow-sm h-[493px] cursor-pointer">
+        <img className="bg-off-white rounded-[5px] w-[370px] h-[255px]" src={data.image} alt="Blog cover" />
+        <div className="flex flex-col justify-start items-start p-[19px]">
+          <div className="flex flex-row">
+            <div className="flex flex-row items-center pr-[7.67px]">
+              <img src={pen} alt="pen" className="w-[11px] h-[11px] mr-[7.67px]" />
+              <h1 className="text-[14px] pr-[29px] text-navy-blue group-hover:text-pink">{data.author}</h1>
             </div>
-            <div className="flex flex-row pr-5">
-              <Icon icon="uil:calendar-alt" className="inline-block mr-1" color="#FFA454" />
-              <h1 className="text-navy-blue">{data.date}</h1>
+            <div className="flex flex-row items-center pr-[4px]">
+              <Icon icon="uil:calendar-alt" className="w-[12px] h-[12px] mr-[4px]" color="#FFA454" />
+              <h1 className="text-[14px] pt-[3.5px] text-navy-blue group-hover:text-pink">{data.date}</h1>
             </div>
           </div>
-          <div className="my-3">
-            <h1 className="font-bold text-navy-blue mb-2">{data.title}</h1>
-            <p>{data.description}</p>
+          <div className="mt-[30px]">
+            <h1 className="font-bold text-[18px] mb-[17px] text-navy-blue group-hover:text-pink">{data.title}</h1>
+            <p className="text-[16px] text-gray mb-[14px] group-hover:text-pink">{data.description}</p>
           </div>
-          <NavItem href={routes.singleBlog} isActive={pathname === routes.singleBlog}>
-            <p className="hover:text-pink">Read more</p>
-          </NavItem>
+          <p className="underline text-[16px] text-navy-blue group-hover:text-pink">Read More</p>
         </div>
       </div>
     </Linkable>
   );
 };
+
 export default BlogItem;

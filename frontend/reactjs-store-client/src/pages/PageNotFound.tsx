@@ -6,10 +6,10 @@ import BrandLogo from "@/components/BrandLogo";
 
 function PageNotFound() {
   return (
-    <div className="flex flex-col items-center justify-center mt-20">
-      <img src={page404}></img>
+    <div className="flex flex-col items-center justify-center mt-[118px]">
+      <img src={page404} className="w-[913px] h-fill"></img>
       <Link to={routes.home}>
-        <Button className="w-[165px] h-[44px] mb-20">Back To Home</Button>
+        <Button className="w-[165px] h-[44px]">Back To Home</Button>
       </Link>
       <BrandLogo/>
     </div>
