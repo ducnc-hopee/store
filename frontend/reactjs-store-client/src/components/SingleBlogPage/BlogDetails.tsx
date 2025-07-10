@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import pen from "/images/vector.svg";
 import type { TProduct } from "@/types/product";
-import { RelatedProduct } from "../RelatedProduct";
+import { BlogRelatedProduct } from "../BlogRelatedProduct";
 import { Button } from "../ui/Button";
 import { Linkable } from "../commons/Linkable";
 import { useNavigate } from "react-router-dom";
@@ -83,7 +83,7 @@ const BlogDetails: React.FC<TBlogDetailsProps> = ({ blog, products, blogs }) => 
             </p>
           </div>
           <div>
-            <div className="grid grid-cols-4 gap-5 py-15">
+            <div className="w-[871px] grid grid-cols-4 gap-x-[12.4px] mb-[49px]">
               {products && products.slice(0, 4).map((product) => <RelatedProduct key={product.id} data={product} />)}
             </div>
             <p className="text-gray">

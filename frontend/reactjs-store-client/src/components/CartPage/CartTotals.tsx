@@ -15,9 +15,9 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2 className="text-xl font-bold text-navy-blue pb-4">Cart Totals</h2>
-      <div className="bg-off-white w-[300px] border-transparent rounded-xl pt-5">
-        <div className="flex flex-col justify-between pb-4 border-b-2 border-[#E8E6F1] mx-5">
+      <h2 className="text-xl font-bold text-navy-blue pb-[42px]">Cart Totals</h2>
+      <div className="bg-off-white w-[371px] border-transparent rounded-[3px] pt-[34px]">
+        <div className="flex flex-col justify-between pb-4 border-b-2 border-[#E8E6F1] ml-[23px]">
           <span className="text-navy-blue">
             {data.map((item) => (
               <div key={item.id} className="flex justify-between text-sm text-navy-blue py-1">
@@ -34,7 +34,7 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ data }) => {
           </div>
         </div>
 
-        <div className="flex justify-between pb-4 pt-10 border-b-2 border-[#E8E6F1] mx-5">
+        <div className="flex justify-between pb-4 pt-10 border-b-2 border-[#E8E6F1] ml-[23px] mr-[35px]">
           <span className="font-semibold text-navy-blue">Totals:</span>
           <span className="text-navy-blue">${total.toFixed(2)}</span>
         </div>
