@@ -1,13 +1,15 @@
 import type { TCartItem } from "@/types/cartItem";
-import React from "react";
+import React, { useState } from "react";
 import CartItem from "./CartItem";
 import { Button } from "../ui/Button";
 
 type TCartListProps = {
   data: TCartItem[];
+  onRemove: (id: string) => void;
+  onClear: () => void;
 };
 
-export const CartList: React.FC<TCartListProps> = ({ data }) => {
+export const CartList: React.FC<TCartListProps> = ({ data, onRemove, onClear }) => {
   return (
     <div className="flex flex-col">
       <div className="flex flex-row mb-[48px] ">
@@ -19,7 +21,7 @@ export const CartList: React.FC<TCartListProps> = ({ data }) => {
 
       <div>
         {data.map((product) => (
-          <CartItem key={product.id} data={product} />
+          <CartItem key={product.id} data={product} onRemove={onRemove} />
         ))}
       </div>
 
@@ -27,7 +29,7 @@ export const CartList: React.FC<TCartListProps> = ({ data }) => {
         <Button className="w-[134px] font-semibold">
           <h1>Update Cart</h1>
         </Button>
-        <Button className="w-[134px] font-semibold">
+        <Button className="w-[134px] font-semibold" onClick={onClear}>
           <h1>Clear Cart</h1>
         </Button>
       </div>

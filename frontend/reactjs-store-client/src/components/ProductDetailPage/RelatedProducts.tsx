@@ -1,13 +1,17 @@
 import React from "react";
 import type { TProduct } from "@/types/product";
-import { RelatedProduct } from "../RelatedProduct";
+import { RelatedProduct } from "../ui/RelatedProduct";
 
 type TProductListProps = {
-  data: TProduct[]|null;
+  data: TProduct[] | null;
 };
 
 const RelatedProducts: React.FC<TProductListProps> = ({ data }) => {
-  return !data?(<><h1>No Related Products!</h1></>):(
+  return !data ? (
+    <>
+      <h1>No Related Products!</h1>
+    </>
+  ) : (
     <div className="flex flex-col  items-right ml-[371px] pt-[126px]">
       <h1 className="text-navy-blue text-[36px] font-bold mb-[47px]">Related Products</h1>
       <div className=" bg-muted rounded-md text-sm">

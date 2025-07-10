@@ -7,7 +7,7 @@ type TProductItemProps = {
   data: TProduct;
 };
 
-export const RelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
+export const BlogRelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
   return (
     <Linkable to={`/product/${data.id}`}>
       <img className="w-[209px] h-[254px] border border-gray-100 shadow-lg mb-[15px]" src={data.image}></img>

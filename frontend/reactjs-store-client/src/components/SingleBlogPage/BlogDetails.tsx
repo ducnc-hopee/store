@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import pen from "/images/vector.svg";
 import type { TProduct } from "@/types/product";
-import { RelatedProduct } from "../RelatedProduct";
+import { BlogRelatedProduct } from "../BlogRelatedProduct";
 import { Button } from "../ui/Button";
 import { Linkable } from "../commons/Linkable";
 import { useNavigate } from "react-router-dom";
@@ -88,7 +88,7 @@ const BlogDetails: React.FC<TBlogDetailsProps> = ({ blog, products, blogs }) => 
           </div>
           <div>
             <div className="w-[871px] grid grid-cols-4 gap-x-[12.4px] mb-[49px]">
-              {products && products.slice(0, 4).map((product) => <RelatedProduct key={product.id} data={product} />)}
+              {products && products.slice(0, 4).map((product) => <BlogRelatedProduct key={product.id} data={product} />)}
             </div>
             <p className="text-gray w-[871px] mb-[32px]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt nostrum error maxime nisi fuga nihil vitae, laborum porro praesentium
@@ -157,7 +157,7 @@ const BlogDetails: React.FC<TBlogDetailsProps> = ({ blog, products, blogs }) => 
                         <div className="text-[12px] text-gray text-left">{blog.description}</div>
                       </div>
                     </div>
-                  </Linkable> 
+                  </Linkable>
                 </li>
               </ul>
             ))}
