@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { priceFilter, checkboxColors } from "../Const";
 import CustomCheckbox from "../CustomCheckbox";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { FiSearch } from "react-icons/fi";
 
 export const PriceFilter = () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ratings, checkboxColors } from "../Const";
-import SectionTitle from "../SectionTitle"; // Adjust if needed
+import SectionTitle from "./SectionTitle"; // Adjust if needed
 import CustomCheckbox from "../CustomCheckbox"; // Adjust the path
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 

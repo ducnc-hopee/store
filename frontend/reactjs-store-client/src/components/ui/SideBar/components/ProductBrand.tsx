@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { brands, checkboxColors } from "../Const";
 import CustomCheckbox from "../CustomCheckbox";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 
 export const ProductBrands = () => {
   const [checkedBrands, setCheckedBrands] = useState<boolean[]>(brands.map(() => false));

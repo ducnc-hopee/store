@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { categories, checkboxColors } from "../Const"; // adjust the import to your structure
 import CustomCheckbox from "../CustomCheckbox";
-import SectionTitle from "../SectionTitle";
+import SectionTitle from "./SectionTitle";
 
 export const Categories = () => {
   const [checkedCategories, setCheckedCategories] = useState<boolean[]>(categories.map(() => false));

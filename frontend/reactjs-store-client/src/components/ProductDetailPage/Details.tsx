@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@iconify/react";
 import PageNotFound from "@/pages/PageNotFound";
 import type { TProduct } from "@/types/product";
+import CircleIconButton from "../ProductRowPage/CircleIconButton";
 
 type TProductDetailsProps = {
   data: TProduct | null;
@@ -49,9 +50,9 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
           <Button variant="ghost">
             <span className="text-[16px] text-navy-blue">Add to cart</span>
           </Button>
-          <Button variant="ghost">
+          <CircleIconButton>
             <Icon icon="uil:heart-alt" color="dark-blue" />
-          </Button>
+          </CircleIconButton>
         </div>
 
         <div className="pb-2">

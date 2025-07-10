@@ -11,7 +11,7 @@ interface FilterToolbarProps {
 
 const FilterToolbar: React.FC<FilterToolbarProps> = ({ sortOptions, selectedSort, onSortChange, viewType, onViewChange }) => {
   return (
-    <div className="flex items-center  justify-end gap-4 w-full mb-6 flex-wrap">
+    <div className="flex items-center  justify-end gap-4 w-full flex-wrap mr-[360px] mb-[100px]">
       {/* Sort and View */}
       <div className="flex items-center gap-4">
         <label className="text-sm font-medium">Sort By:</label>
