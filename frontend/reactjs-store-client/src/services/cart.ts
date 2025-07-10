@@ -29,3 +29,7 @@ export const getUserCart = async () => {
 
   return res.data;
 };
+
+export const addToCart = async ()=>{
+  
+}

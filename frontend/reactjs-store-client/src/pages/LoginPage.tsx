@@ -133,43 +133,52 @@ function LoginPage() {
             {isEditing ? (
               <Form {...editForm}>
                 <form onSubmit={editForm.handleSubmit(handleEdit)} className="">
-                  <FormField
-                    control={editForm.control}
-                    name="username"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Username" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={editForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={editForm.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Password" type="password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <div className="flex gap-4">
+                  <div className="mb-2">
+                    <p className="text-[20px] font-bold text-navy-blue">Username: </p>
+                    <FormField
+                      control={editForm.control}
+                      name="username"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Username" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="mb-2">
+                    <p className="text-[20px] font-bold text-navy-blue">Email: </p>
+                    <FormField
+                      control={editForm.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Email" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="mb-2">
+                    <p className="text-[20px] font-bold text-navy-blue">Password: </p>
+                    <FormField
+                      control={editForm.control}
+                      name="password"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Password" type="password" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="flex gap-4 mt-3">
                     <Button type="submit" disabled={editLoading} className="bg-navy-blue text-white">
                       {editLoading ? "Updating..." : "Update Account"}
                     </Button>
@@ -218,14 +227,14 @@ function LoginPage() {
             <p className="text-gray">Please login using account details below.</p>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full px-15 pt-5">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full px-15 pt-5">
                 <FormField
                   control={form.control}
                   name="username"
                   rules={{ required: "Username is required" }}
                   render={({ field }) => (
                     <FormItem>
-                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[23px] h-[52px]">
+                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center h-[52px]">
                         <FormControl>
                           <Input
                             type="text"
@@ -245,7 +254,7 @@ function LoginPage() {
                   rules={{ required: "Password is required" }}
                   render={({ field }) => (
                     <FormItem>
-                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[23px] h-[52px]">
+                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center h-[52px]">
                         <FormControl>
                           <Input
                             type="password"

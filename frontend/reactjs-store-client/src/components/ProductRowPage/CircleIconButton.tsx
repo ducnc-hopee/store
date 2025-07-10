@@ -13,7 +13,7 @@ interface CircleIconButtonProps {
 const CircleIconButton: React.FC<CircleIconButtonProps> = ({
   children,
   onClick,
-  size = "w-[31px] h-[31px]",
+  size = "w-[35px] h-[35px]",
   bgColor = "bg-white",
   hoverColor = "hover:bg-[#f1f1f1]",
   textColor = "text-[#535399]",
