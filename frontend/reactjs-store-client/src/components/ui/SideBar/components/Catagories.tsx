@@ -15,7 +15,7 @@ export const Categories = () => {
   return (
     <div>
       <SectionTitle>Categories</SectionTitle>
-      <ul className="space-y-3 text-gray-700">
+      <ul className="space-y-3 text-[#7E81A2] text-center font-lato text-[16px] font-normal leading-[30px]">
         {categories.map((category, index) => (
           <li key={index}>
             <label className="flex items-center gap-2 cursor-pointer">

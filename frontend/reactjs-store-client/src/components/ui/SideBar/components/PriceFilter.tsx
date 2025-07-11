@@ -1,33 +1,34 @@
-import { useState } from "react";
 import { priceFilter, checkboxColors } from "../Const";
 import CustomCheckbox from "../CustomCheckbox";
 import SectionTitle from "./SectionTitle";
 import { FiSearch } from "react-icons/fi";
 
-export const PriceFilter = () => {
-  const [checkedPrices, setCheckedPrices] = useState<boolean[]>(priceFilter.map(() => false));
+type PriceFilterProps = {
+  selectedPrices: [number, number][];
+  onChange: (updated: [number, number][]) => void;
+};
 
-  const toggleBrand = (index: number) => {
-    const updated = [...checkedPrices];
-    updated[index] = !updated[index];
-    setCheckedPrices(updated);
+export const PriceFilter: React.FC<PriceFilterProps> = ({ selectedPrices, onChange }) => {
+  const togglePrice = (range: [number, number]) => {
+    const exists = selectedPrices.some(([min, max]) => min === range[0] && max === range[1]);
+    const updated = exists ? selectedPrices.filter(([min, max]) => min !== range[0] || max !== range[1]) : [...selectedPrices, range];
+    onChange(updated);
   };
-
   return (
     <div>
       <SectionTitle>Product Filter</SectionTitle>
-      <ul className="space-y-4 text-gray-700">
-        {priceFilter.map((priceLabel, index) => (
+      <ul className="space-y-3 text-[#989BB5] text-center font-lato text-[16px] font-normal leading-[30px]">
+        {priceFilter.map((item, index) => (
           <li key={index}>
             <label className="flex items-center gap-2 cursor-pointer">
               <CustomCheckbox
                 id={`price-${index}`}
-                checked={checkedPrices[index] ?? false}
-                onChange={() => toggleBrand(index)}
+                checked={selectedPrices.some(([min, max]) => min === item.min && max === item.max)}
+                onChange={() => togglePrice([item.min, item.max])}
                 bgColorUnchecked={checkboxColors.category.unchecked}
                 bgColorChecked={checkboxColors.category.checked}
               />
-              <span>{priceLabel}</span>
+              <span>{item.label}</span>
             </label>
           </li>
         ))}

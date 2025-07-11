@@ -12,7 +12,7 @@ export const ratings = [
   { stars: 4, count: 2341 },
   { stars: 3, count: 1726 },
   { stars: 2, count: 258 },
-  { stars: 2, count: 25 },
+  { stars: 1, count: 25 },
 ];
 
 export const categories = [
@@ -28,10 +28,10 @@ export const categories = [
 ];
 
 export const priceFilter =[
-  "$0.00 - $150.00",
-  "$150.00 - $350.00",
-  "$150.00 - $504.00",
-  "$450.00+"
+  {label: "$0.00 - $150.00", min:0, max: 150},
+  {label: "$150.00 - $350.00", min: 151, max: 350},
+  {label: "$350.00 - $504.00", min: 351, max: 504},
+  {label: "$450.00+", min: 451, max: Infinity}
 ]
 
 export const colors = [

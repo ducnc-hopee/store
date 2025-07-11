@@ -9,43 +9,42 @@ const Product = () => {
   const [data, setData] = useState<TProduct[]>([]);
   const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const [sort, setSort] = useState<string>("Best Match");
-
-   const sortOptions = ["Best Match", "Price: Low to High", "Price: High to Low"];
-
+  const sortOptions = ["Best Match", "Price: Low to High", "Price: High to Low"];
+  const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
+  const [selectedPrices, setSelectedPrices] = useState<[number, number][]>([]);
 
   useEffect(() => {
     getProducts().then((products) => setData(products));
   }, []);
 
-return (
-  <div className="min-h-screen pt-[124px]">
-    {/* Toolbar */}
-    <div className="max-w-[1200px] mx-auto px-4">
-      <FilterToolbar
-        sortOptions={sortOptions}
-        selectedSort={sort}
-        onSortChange={setSort}
-        viewType={viewType}
-        onViewChange={setViewType}
-      />
-    </div>
+  return (
+    <div className="min-h-screen pt-[124px] bg-white overflow-x-hidden">
+      {/* Toolbar */}
+      <div className="max-w-[1200px] mx-auto px-4">
+        <FilterToolbar sortOptions={sortOptions} selectedSort={sort} onSortChange={setSort} viewType={viewType} onViewChange={setViewType} />
+      </div>
 
-    {/* Sidebar + Product List Container */}
-    <div className="w-screen overflow-x-auto ml-[210px]">
-      <div className="flex min-w-[1200px]">
-        {/* Sidebar */}
-        <div className="w-[300px] shrink-0 bg-white">
-          <SidebarFilter />
-        </div>
+      {/* Sidebar + Product List Container */}
+      <div className="w-full overflow-x-auto ml-[210px]">
+        <div className="flex min-w-[1200px] bg-white">
+          {/* Sidebar */}
+          <div className="w-[300px] shrink-0 bg-white">
+            <SidebarFilter
+              selectedRatings={selectedRatings}
+              onRatingChange={setSelectedRatings}
+              selectedPrices={selectedPrices}
+              onPriceChange={setSelectedPrices}
+            />
+          </div>
 
-        {/* Product List */}
-        <div className="flex-1 bg-white">
-          <ProductList data={data} viewType={viewType} sort={sort}/>
+          {/* Product List */}
+          <div className="flex-1 bg-white">
+            <ProductList data={data} viewType={viewType} sort={sort} selectedRatings={selectedRatings} selectedPrices={selectedPrices} />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default Product;

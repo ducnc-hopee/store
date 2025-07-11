@@ -15,7 +15,7 @@ export const ProductBrands = () => {
   return (
     <div>
       <SectionTitle>Product Brand</SectionTitle>
-      <ul className="space-y-3 text-gray-700">
+      <ul className="space-y-3 text-[#7E81A2] text-center font-lato text-[16px] font-normal leading-[30px]">
         {brands.map((brand, index) => (
           <li key={index}>
             <label className="flex items-center gap-2 cursor-pointer">
