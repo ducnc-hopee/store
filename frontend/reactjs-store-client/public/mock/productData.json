@@ -8,7 +8,9 @@
     "description": "High-quality wireless headphones with noise cancellation.",
     "image": "/images/chair.png",
     "rating": "5",
-    "numRating": "243"
+    "numRating": "243",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "2",
@@ -19,7 +21,9 @@
     "description": "Durable and stylish smartphone case for everyday use.",
     "image": "/images/chair.png",
     "rating": "4",
-    "numRating": "87"
+    "numRating": "87",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "3",
@@ -30,7 +34,10 @@
     "description": "Portable Bluetooth speaker with deep bass and long battery life.",
     "image": "/images/chair.png",
     "rating": "5",
-    "numRating": "192"
+    "numRating": "192",
+    "color": "Black",
+    "size":"M"
+
   },
   {
     "id": "4",
@@ -41,7 +48,9 @@
     "description": "Ergonomic aluminum stand compatible with most laptops.",
     "image": "/images/chair.png",
     "rating": "4",
-    "numRating": "110"
+    "numRating": "110",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "5",
@@ -52,7 +61,9 @@
     "description": "High-precision gaming mouse with customizable buttons.",
     "image": "/images/chair.png",
     "rating": "5",
-    "numRating": "318"
+    "numRating": "318",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "6",
@@ -63,7 +74,10 @@
     "description": "RGB backlit mechanical keyboard with blue switches.",
     "image": "/images/chair.png",
     "rating": "4",
-    "numRating": "167"
+    "numRating": "167",
+    "color": "Black",
+    "size":"M"
+
   },
   {
     "id": "7",
@@ -74,7 +88,9 @@
     "description": "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader.",
     "image": "/images/chair.png",
     "rating": "5",
-    "numRating": "202"
+    "numRating": "202",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "8",
@@ -85,7 +101,9 @@
     "description": "Waterproof fitness tracker with heart rate monitor and step counter.",
     "image": "/images/chair.png",
     "rating": "4",
-    "numRating": "134"
+    "numRating": "134",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "9",
@@ -96,7 +114,9 @@
     "description": "LED desk lamp with touch control and adjustable brightness.",
     "image": "/images/chair.png",
     "rating": "4",
-    "numRating": "76"
+    "numRating": "76",
+    "color": "Black",
+    "size":"M"
   },
   {
     "id": "10",
@@ -107,6 +127,8 @@
     "description": "10,000mAh power bank with fast charging support.",
     "image": "/images/chair.png",
     "rating": "3",
-    "numRating": "289"
+    "numRating": "289",
+    "color": "Black",
+    "size":"M"
   }
 ]

@@ -1,6 +1,7 @@
 import type { TCartItem } from "@/types/cartItem";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
+import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TCartItemProps = {
   data: TCartItem;
@@ -9,18 +10,18 @@ type TCartItemProps = {
 const CartItem: React.FC<TCartItemProps> = ({ data }) => {
   const [quantity, setQuantity] = useState(Number(data.quantity));
   const [total, setTotal] = useState(Number(data.price) * Number(quantity));
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
 
   useEffect(() => {
     setTotal(Number(data.price) * Number(quantity));
-  }, [quantity, data.price]);
+    updateQuantity(data.id, quantity);
+  }, [quantity]);
 
   const handleIncrement = () => setQuantity((q) => q + 1);
   const handleDecrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
   return (
-    <div
-      className="grid gap-x-10 grid-cols-5 py-5 border-b-2 border-[#E1E1E4] items-center"
-    >
+    <div className="grid gap-x-10 grid-cols-5 py-5 border-b-2 border-[#E1E1E4] items-center">
       <div className="col-span-2 flex items-center gap-2">
         <img className="w-[80px] h-[80px] object-cover rounded" src={data.image} alt={data.name} />
         <div className="flex flex-col justify-start text-left gap-1">

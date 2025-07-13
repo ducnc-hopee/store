@@ -1,8 +1,6 @@
 import type { TCartItem } from "@/types/cartItem";
 import axios from "axios";
 
-
-
 export const getCart = async (): Promise<TCartItem[]> => {
   const response = await axios.get("/mock/cartData.json");
   const data = response.data as TCartItem[];

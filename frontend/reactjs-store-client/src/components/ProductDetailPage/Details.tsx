@@ -4,15 +4,25 @@ import { Icon } from "@iconify/react";
 import PageNotFound from "@/pages/PageNotFound";
 import type { TProduct } from "@/types/product";
 import CircleIconButton from "../ProductRowPage/CircleIconButton";
+import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TProductDetailsProps = {
   data: TProduct | null;
 };
 
 const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
-  return !data ? (
-    <PageNotFound />
-  ) : (
+  const addToCart = useCartStore((state) => state.addToCart);
+  
+  if (!data) return <PageNotFound />;
+
+  const handleAddToCart = () => {
+    const cartItem = { ...data, quantity: 1 };
+    addToCart(cartItem);
+    alert("Added to cart!");
+
+  };
+
+  return (
     <div className="flex flex-row items-start justify-center shadow-xl mx-60 my-20 border border-gray-200 rounded-md overflow-hidden">
       <div className="w-5/10 flex flex-row gap-4 p-6 justify-between">
         <div className="flex flex-col gap-3">
@@ -47,7 +57,7 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
         <p className="text-gray font-medium pb-4">{data.description}</p>
 
         <div className="flex items-center gap-4 pb-6">
-          <Button variant="ghost">
+          <Button variant="ghost" onClick={handleAddToCart}>
             <span className="text-[16px] text-navy-blue">Add to cart</span>
           </Button>
           <CircleIconButton>
