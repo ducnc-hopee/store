@@ -5,4 +5,3 @@ package-lock.json
 app.js
 Procfile
 mongo_data
-.env
