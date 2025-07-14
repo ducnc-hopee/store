@@ -100,8 +100,8 @@ module.exports.editProduct = (req, res) => {
     });
   } else {
     Product.findOneAndUpdate(
-      { _id: req.params.id, updatedAt: Date.now },
-      req.body
+      { _id: req.params.id },
+      { ...req.body, updatedAt: Date.now() }
     )
       .then((product) => {
         res.json(product);
