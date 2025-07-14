@@ -1,18 +1,17 @@
 import axios from "axios";
-import type { TProduct } from "../types/product";
+import { fromProductResponseAPIToProduct, type TProduct, type TProductResponse } from "../types/product";
 
-
+const baseURL = "http://localhost:8765";
 export const getProducts = async (): Promise<TProduct[]> => {
-  const response = await axios.get("/mock/productData.json");
-  const data = response.data as TProduct[];
+  const response = await axios.get<TProductResponse[]>(`${baseURL}/products`);
+  const data = response.data.map((item) => fromProductResponseAPIToProduct(item));
   return data;
 };
 
-export const getProduct = async (id: string): Promise<TProduct> => {
-  const products = await getProducts();
-  const product = products.find((product) => product.id === id);
-  if (!product) {
-    throw new Error(`Product with id ${id} not found`);
-  }
-  return product;
+export const getProductDetail = async (id: string): Promise<TProduct> => {
+  const response = await axios.get<TProductResponse>(`${baseURL}/products/${id}`);
+  const data = fromProductResponseAPIToProduct(response.data)
+  console.log(data);
+  
+  return data;
 };
