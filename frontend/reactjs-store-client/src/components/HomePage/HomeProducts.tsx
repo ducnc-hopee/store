@@ -22,7 +22,7 @@ export const HomeProducts: React.FC<TProductListProps> = ({ data }) => {
           <div className="p-4 bg-muted rounded-md text-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-30">
               {data.slice(0, 8).map((product) => (
-                <ProductItem key={product.id} data={product} />
+                <ProductItem key={product.id} data={product} viewType="grid"/>
               ))}
             </div>
           </div>

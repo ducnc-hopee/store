@@ -30,7 +30,7 @@ export const fromProductResponseAPIToProduct = (product: TProductResponse): TPro
     id: product._id,
     name: product.title,
     price: product.price,
-    discountedPrice: product.price * product.discountPercentage,
+    discountedPrice: (product.price *(1- product.discountPercentage)),
     category: product.categoryName,
     description: product.description,
     image: product.image,

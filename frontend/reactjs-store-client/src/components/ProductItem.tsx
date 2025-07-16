@@ -19,8 +19,8 @@ export const ProductItem: React.FC<TProductItemProps> = ({ data }) => {
           <div className="w-3 h-4 rounded-full bg-purple" />
         </div>
         <div className="flex justify-between gap-10 pt-2">
-          <h1>${data.price}</h1>
-          <h1 className="line-through text-pink">${data.discountedPrice}</h1>
+          <h1>${data.discountedPrice}</h1>
+          <h1 className="line-through text-pink">${data.price}</h1>
         </div>
       </div>
     </Linkable>

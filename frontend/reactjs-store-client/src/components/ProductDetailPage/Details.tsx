@@ -49,8 +49,8 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
         </div>
 
         <div className="flex gap-4 pb-4">
-          <h1 className=" text-navy-blue">${data.price}</h1>
-          <h1 className=" line-through text-pink">${data.discountedPrice}</h1>
+          <h1 className=" text-navy-blue">${data.discountedPrice}</h1>
+          <h1 className=" line-through text-pink">${data.price}</h1>
         </div>
 
         <h2 className="text-navy-blue font-semibold pb-1">Color</h2>

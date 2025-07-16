@@ -23,8 +23,8 @@ export const RelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
         </div>
       </div>
       <div className="flex flex-row ml-[7px]">
-        <h1 className="h-[13.8px] w-[44px] text-navy-blue">${data.price}</h1>
-        <h1 className="h-[13.8px] line-through text-pink ml-[9.26px]">${data.discountedPrice}</h1>
+        <h1 className="h-[13.8px] w-[44px] text-navy-blue">${data.discountedPrice}</h1>
+        <h1 className="h-[13.8px] line-through text-pink ml-[9.26px]">${data.price}</h1>
       </div>
     </Linkable>
   );
