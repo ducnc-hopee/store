@@ -38,9 +38,9 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
           <span className="pl-[5px] text-sm text-navy-blue">({data.numRating})</span>
         </div>
 
-        <div className="flex gap-[18px] pb-4 h-[29px] pt-[5px]">
-          <h1 className=" text-navy-blue">${data.price}</h1>
-          <h1 className=" line-through text-pink">${data.discountedPrice}</h1>
+        <div className="flex gap-4 pb-4">
+          <h1 className=" text-navy-blue">${data.discountedPrice}</h1>
+          <h1 className=" line-through text-pink">${data.price}</h1>
         </div>
 
         <h2 className="text-navy-blue font-semibold pt-[12px]">Color</h2>

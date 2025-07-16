@@ -30,7 +30,7 @@ export const HomeProducts: React.FC<TProductListProps> = ({ data }) => {
           <div className="mb-[115px]">
             <div className="grid grid-cols-4 gap-[12px] mx-[162px] w-[1596px] h-[1258px]">
               {data.slice(0, 8).map((product) => (
-                <ProductItem key={product.id} data={product} />
+                <ProductItem key={product.id} data={product} viewType="grid"/>
               ))}
             </div>
           </div>
