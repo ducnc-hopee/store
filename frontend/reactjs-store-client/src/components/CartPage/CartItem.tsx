@@ -1,10 +1,9 @@
-import type { TCartItem } from "@/types/cartItem";
+import type { TCartProduct  } from "@/types/cartItem";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 
 type TCartItemProps = {
-  data: TCartItem;
-  onRemove: (id: string) => void;
+  data: TCartProduct & { userId: string };
 };
 
 const CartItem: React.FC<TCartItemProps> = ({ data, onRemove }) => {
@@ -13,7 +12,8 @@ const CartItem: React.FC<TCartItemProps> = ({ data, onRemove }) => {
 
   useEffect(() => {
     setTotal(Number(data.price) * Number(quantity));
-  }, [quantity, data.price]);
+    updateQuantity(data.userId, data.id, quantity);
+  }, [quantity]);
 
   const handleIncrement = () => setQuantity((q) => q + 1);
   const handleDecrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));

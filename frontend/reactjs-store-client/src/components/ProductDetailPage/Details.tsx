@@ -4,17 +4,44 @@ import { Icon } from "@iconify/react";
 import PageNotFound from "@/pages/PageNotFound";
 import type { TProduct } from "@/types/product";
 import CircleIconButton from "../ProductRowPage/CircleIconButton";
+import { useCartStore } from "@/gobalStates/useCartStore";
+import React, {useState} from "react";
 
 type TProductDetailsProps = {
   data: TProduct | null;
+  userId: string;
+  selectedColor?: string | null;
 };
 
-const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
-  return !data ? (
-    <PageNotFound />
-  ) : (
-    <div className="flex flex-row items-start justify-start shadow-md ml-[371px] mt-[121px] border border-gray-200 rounded-md overflow-hidden w-[1170px] h-[509px] mb-[131px]">
-      <div className="flex flex-row gap-[11px] pl-[13px] pt-[13px] justify-between">
+const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+  if (!data) return <PageNotFound />;
+
+  const handleAddToCart = () => {
+    if (!data) return;
+
+    const product = {
+      id: data.id,
+      name: data.name,
+      price: data.discountedPrice, // use correct price field
+      quantity: 1,
+      image: data.image,
+    };
+
+    const cartItem = {
+      userId: userId,
+      products: [product],
+    };
+
+    addToCart(cartItem);
+    alert("Added to cart!");
+  };
+
+  return (
+    <div className="flex flex-row items-start justify-center shadow-xl mx-60 my-20 border border-gray-200 rounded-md overflow-hidden">
+      <div className="w-5/10 flex flex-row gap-4 p-6 justify-between">
         <div className="flex flex-col gap-3">
           <img src={data.image} className=" h-[155px] object-cover border border-gray-100 rounded-[3px]" />
           <img src={data.image} className=" h-[155px] object-cover border border-gray-100 rounded-[3px]" />
@@ -43,8 +70,23 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
           <h1 className=" line-through text-pink">${data.price}</h1>
         </div>
 
-        <h2 className="text-navy-blue font-semibold pt-[12px]">Color</h2>
-        <p className="text-gray font-medium pt-[12px]">{data.description}</p>
+        <h2 className="text-navy-blue font-semibold pb-1">Color</h2>
+
+        {data.colors && data.colors.length > 0 && (
+          <div className="flex gap-2 pb-3">
+            {data.colors.map((color) => (
+              <button
+                key={color}
+                onClick={()=> setSelectedColor(color)}
+                className={`w-6 h-6 rounded-full border transition-transform duration-150 ${selectedColor === color ? "border-black scale-110" : "border-gray-300"}`}
+                style={{ backgroundColor: color }}
+                title={color}
+              />
+            ))}
+          </div>
+        )}
+
+        <p className="text-gray font-medium pb-4">{data.description}</p>
 
         <div className="flex pt-[14px] items-center gap-[26px] pb-[17px]">
           <Button variant="ghost">

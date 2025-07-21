@@ -136,7 +136,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n        \"colors\": [\n            \"red\",\n            \"blue\"\n        ],\n        \"title\": \"fugiat ut\",\n        \"price\": 1000,\n        \"discountPercentage\": 0.1,\n        \"description\": \"exercitation labore occaecat anim\",\n        \"code\": \"Jean0001\",\n        \"categoryId\": \"6861243b9dcb15d7ca92e794\",\n        \"image\": \"http://qNMi.ulFpGfrKmS4FdAhCOzjh+P7BDraZwaggCfMfSqEUMH6tLBXEuKncFlQ1ieu7itVW8ZMS\",\n        \"rating\": 5\n    }",
+									"raw": "{\n        \"colors\": [\n            \"red\",\n            \"blue\"\n        ],\n        \"title\": \"fugiat ut\",\n        \"price\": 1000,\n        \"discountPercentage\": 0.1,\n        \"description\": \"exercitation labore occaecat anim\",\n        \"code\": \"Jean0001\",\n        \"categoryId\": \"6861243b9dcb15d7ca92e794\",\n        \"image\": \"http://qNMi.ulFpGfrKmS4FdAhCOzjh+P7BDraZwaggCfMfSqEUMH6tLBXEuKncFlQ1ieu7itVW8ZMS\",\n        \"rating\": 5\n    \"color\": red\n }",
 									"options": {
 										"raw": {
 											"language": "json"

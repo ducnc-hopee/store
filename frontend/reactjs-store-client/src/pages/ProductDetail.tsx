@@ -13,6 +13,9 @@ function ProductDetail() {
   const [data, setData] = useState<TProduct | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<TProduct[]>([]);
 
+  const userId="temp-user-id";
+  
+
   useEffect(() => {
     if (id) {
       getProductDetail(id).then((product) => setData(product));
@@ -24,7 +27,7 @@ function ProductDetail() {
 
   return (
     <div>
-      <ProductDetails data={data} />
+      <ProductDetails data={data} userId={userId}/>
       <MoreDetails data={data} />
       <RelatedProducts data={relatedProducts} />
       <BrandLogo />

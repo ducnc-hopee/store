@@ -1,16 +1,16 @@
 import React from "react";
-import type { TCartItem } from "@/types/cartItem";
+import type { TCartProduct } from "@/types/cartItem";
 import { Icon } from "@iconify/react";
 import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 
 type TCartTotalsProps = {
-  data: TCartItem[];
+  products: TCartProduct[];
 };
 
-const CartTotals: React.FC<TCartTotalsProps> = ({ data }) => {
-  const total = data.reduce((sum, item) => {
-    return sum + Number(item.price) * Number(item.quantity);
+const CartTotals: React.FC<TCartTotalsProps> = ({ products }) => {
+  const total =  products.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
   }, 0);
 
   return (
@@ -19,7 +19,7 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ data }) => {
       <div className="bg-off-white w-[371px] border-transparent rounded-[3px] pt-[34px]">
         <div className="flex flex-col justify-between pb-4 border-b-2 border-[#E8E6F1] ml-[23px] mr-[35px]">
           <span className="text-navy-blue">
-            {data.map((item) => (
+            {products.map((item) => (
               <div key={item.id} className="flex justify-between text-sm text-navy-blue py-1">
                 <span>
                   {item.name} (x{item.quantity})
