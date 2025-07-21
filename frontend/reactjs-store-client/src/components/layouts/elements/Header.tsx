@@ -44,10 +44,12 @@ function Header() {
               </Button>
             </div>
           ) : (
-            <div className="flex flex-row items-center">
-              <h1 className={`text-[16px] font-semibold py-[14px] ${pathname === routes.account ? "text-pink" : "text-[#F1F1F1]"}`}>Login</h1>
-              <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] mb-[16px] mt-[12px] pb-[1px] mr-[16px]" />
-            </div>
+            <HeaderItem href={routes.account} isActive={pathname === routes.account}>
+              <div className="flex flex-row items-center">
+                <h1 className={`text-[16px] font-semibold py-[14px] ${pathname === routes.account ? "text-pink" : "text-[#F1F1F1]"}`}>Login</h1>
+                <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] mb-[16px] mt-[12px] pb-[1px] mr-[16px]" />
+              </div>
+            </HeaderItem>
           )}
 
           <HeaderItem href={routes.cart} isActive={pathname === routes.cart}>

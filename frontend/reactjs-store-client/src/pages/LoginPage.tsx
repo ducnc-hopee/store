@@ -132,7 +132,7 @@ function LoginPage() {
           <div className="w-full px-6">
             {isEditing ? (
               <Form {...editForm}>
-                <form onSubmit={editForm.handleSubmit(handleEdit)} className="space-y-4">
+                <form onSubmit={editForm.handleSubmit(handleEdit)} className="">
                   <FormField
                     control={editForm.control}
                     name="username"
@@ -245,7 +245,7 @@ function LoginPage() {
                   rules={{ required: "Password is required" }}
                   render={({ field }) => (
                     <FormItem>
-                      <div className="flex flex-row border-2 rounded border-gray items-center px-2">
+                      <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[23px] h-[52px]">
                         <FormControl>
                           <Input
                             type="password"
