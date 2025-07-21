@@ -6,9 +6,10 @@ import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TCartListProps = {
   data: TCartItem[];
+  userId:string;
 };
 
-export const CartList: React.FC<TCartListProps> = ({ data }) => {
+export const CartList: React.FC<TCartListProps> = ({ data, userId}) => {
   const clearCart = useCartStore((state) => state.clearCart);
 
   const handleUpdateCart = () => {
@@ -16,7 +17,8 @@ export const CartList: React.FC<TCartListProps> = ({ data }) => {
   };
 
   const handleClearCart = () => {
-    clearCart();
+    
+    clearCart(userId);
   };
 
   return (
@@ -29,10 +31,12 @@ export const CartList: React.FC<TCartListProps> = ({ data }) => {
       </div>
 
       <div>
-        {data.map((product) => (
-          <CartItem key={product.id} data={product} />
-        ))}
-      </div>
+        {data.map((cartItem) => 
+          cartItem.products.map((product) => (
+         <CartItem key={product.id} data={{ ...product, userId: cartItem.userId }} />
+          ))
+          )}
+          </div>
 
       <div className="flex flex-row justify-between py-10">
         <Button onClick={handleUpdateCart}>Update Cart</Button>

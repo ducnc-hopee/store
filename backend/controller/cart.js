@@ -27,7 +27,6 @@ module.exports.getCartsbyUserid = (req, res) => {
   console.log(startDate, endDate);
   Cart.find({
     userId,
-    date: { $gte: new Date(startDate), $lt: new Date(endDate) },
   })
     .then((carts) => {
       res.json(carts);
@@ -45,63 +44,121 @@ module.exports.getSingleCart = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports.addCart = (req, res) => {
-  if (typeof req.body == undefined) {
-    res.json({
-      status: "error",
-      message: "data is undefined",
+module.exports.addCart = async (req, res) => {
+  try {
+    const { userId, products } = req.body;
+
+    if (!userId || !Array.isArray(products)) {
+      return res.status(400).json({
+        status: "error",
+        message: "Missing or invalid required fields (userId or products).",
+      });
+    }
+
+    const existingCart = await Cart.findOne({ userId });
+
+    let savedCart;
+    if (existingCart) {
+      // Update existing cart (replace products, or you can merge logic here)
+      existingCart.products = products;
+      existingCart.date = new Date();
+      savedCart = await existingCart.save();
+    } else {
+      const newCart = new Cart({
+        userId,
+        products,
+        date: new Date(), // or you can allow date to come from req.body
+      });
+
+      savedCart = await newCart.save();
+    }
+
+    return res.status(201).json({
+      status: "success",
+      message: "Cart successfully added.",
+      data: savedCart,
     });
-  } else {
-    //     let cartCount = 0;
-    // Cart.find().countDocuments(function (err, count) {
-    //   cartCount = count
-    //   })
-
-    //     .then(() => {
-    const cart = {
-      id: 11,
-      userId: req.body.userId,
-      date: req.body.date,
-      products: req.body.products,
-    };
-    // cart.save()
-    //   .then(cart => res.json(cart))
-    //   .catch(err => console.log(err))
-
-    res.json(cart);
-    // })
-
-    //res.json({...req.body,id:Cart.find().count()+1})
+  } catch (error) {
+    console.error("Error saving cart:", error.message);
+    return res.status(500).json({
+      status: "error",
+      message: "Failed to save cart.",
+      error: error.message,
+    });
   }
 };
 
-module.exports.editCart = (req, res) => {
-  if (typeof req.body == undefined || req.params.id == null) {
-    res.json({
-      status: "error",
-      message: "something went wrong! check your sent data",
+module.exports.editCart = async (req, res) => {
+  try {
+    const userId = req.params.id; // assumes PUT /cart/:id
+    const { id: productId, quantity } = req.body;
+
+    if (!userId || !productId || typeof quantity !== "number") {
+      return res.status(400).json({
+        status: "error",
+        message: "Missing userId, productId, or quantity.",
+      });
+    }
+
+    const cart = await Cart.findOne({ userId });
+    if (!cart) {
+      return res
+        .status(404)
+        .json({ status: "error", message: "Cart not found" });
+    }
+
+    const productIndex = cart.products.findIndex(
+      (item) => item.productId === productId
+    );
+
+    if (productIndex === -1) {
+      return res
+        .status(404)
+        .json({ status: "error", message: "Product not in cart" });
+    }
+
+    cart.products[productIndex].quantity = quantity;
+    cart.date = new Date();
+
+    const updatedCart = await cart.save();
+
+    res.status(200).json({
+      status: "success",
+      message: "Cart updated successfully.",
+      data: updatedCart,
     });
-  } else {
-    res.json({
-      id: parseInt(req.params.id),
-      userId: req.body.userId,
-      date: req.body.date,
-      products: req.body.products,
-    });
+  } catch (error) {
+    console.error("Error editing cart:", error.message);
+    res
+      .status(500)
+      .json({ status: "error", message: "Failed to update cart." });
   }
 };
 
-module.exports.deleteCart = (req, res) => {
-  if (req.params.id == null) {
-    res.json({
-      status: "error",
-      message: "cart id should be provided",
+module.exports.deleteCart = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    if (!userId) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "User ID required" });
+    }
+
+    const result = await Cart.findOneAndDelete({ userId });
+
+    if (!result) {
+      return res
+        .status(404)
+        .json({ status: "error", message: "Cart not found" });
+    }
+
+    res.status(200).json({
+      status: "success",
+      message: "Cart deleted successfully",
     });
-  } else {
-    Cart.findOne({ id: req.params.id })
-      .then((cart) => {
-        res.json(cart);
-      })
-      .catch((err) => console.log(err));
+  } catch (error) {
+    console.error("Error deleting cart:", error.message);
+    res.status(500).json({ status: "error", message: "Failed to delete cart" });
   }
 };

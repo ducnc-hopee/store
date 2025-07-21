@@ -8,6 +8,7 @@ export type TProduct = {
   image: string;
   rating?: string;
   numRating: string;
+  colors: string[];
 };
 
 export type TProductResponse = {
@@ -36,5 +37,6 @@ export const fromProductResponseAPIToProduct = (product: TProductResponse): TPro
     image: product.image,
     rating: product.rating.toString(),
     numRating: "123",
+    colors: product.colors,
   };
 };

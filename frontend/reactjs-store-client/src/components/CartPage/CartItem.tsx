@@ -1,10 +1,10 @@
-import type { TCartItem } from "@/types/cartItem";
+import type { TCartProduct  } from "@/types/cartItem";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TCartItemProps = {
-  data: TCartItem;
+  data: TCartProduct & { userId: string };
 };
 
 const CartItem: React.FC<TCartItemProps> = ({ data }) => {
@@ -14,7 +14,7 @@ const CartItem: React.FC<TCartItemProps> = ({ data }) => {
 
   useEffect(() => {
     setTotal(Number(data.price) * Number(quantity));
-    updateQuantity(data.id, quantity);
+    updateQuantity(data.userId, data.id, quantity);
   }, [quantity]);
 
   const handleIncrement = () => setQuantity((q) => q + 1);

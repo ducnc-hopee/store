@@ -1,17 +1,25 @@
-import type { TCartItem } from "@/types/cartItem";
+import { fromCartResponseToCartItem, type TCartItemResponse, type TCartItem } from './../types/cartItem';
 import axios from "axios";
 
+const baseURL = "http://localhost:8765"
+
+// Get all cart items
 export const getCart = async (): Promise<TCartItem[]> => {
-  const response = await axios.get("/mock/cartData.json");
-  const data = response.data as TCartItem[];
-  return data;
+  const response = await axios.get(`${baseURL}/carts`);
+  const data = response.data as TCartItemResponse[];
+
+  const converted = data.map(fromCartResponseToCartItem);
+  return converted;
 };
 
-export const getCartItem = async (id: string): Promise<TCartItem> => {
-  const products = await getCart();
-  const product = products.find((product) => product.id === id);
-  if (!product) {
-    throw new Error(`Product with id ${id} not found`);
+// Get a specific item by ID
+export const getCartByUserId = async (userId: string): Promise<TCartItem> => {
+  const cartItems = await getCart();
+  const userCart = cartItems.find((cart) => cart.userId === userId);
+
+  if (!userCart) {
+    throw new Error(`Cart for user ${userId} not found`);
   }
-  return product;
+
+  return userCart;
 };

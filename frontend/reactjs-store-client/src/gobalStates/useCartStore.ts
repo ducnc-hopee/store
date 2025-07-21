@@ -1,49 +1,42 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 import type { TCartItem } from "@/types/cartItem";
+import axios from "axios";
 
 type CartState = {
   cart: TCartItem[];
-  addToCart: (item: TCartItem) => void;
-  clearCart: () => void;
-  updateQuantity: (id: string, newQuantity: number) => void;
+  fetchCart: (userId: string) => Promise<void>;
+  addToCart: (item: TCartItem) => Promise<void>
+  clearCart: (userId: string) => Promise<void>;
+  updateQuantity: (userId: string, productId: string, newQuantity: number) => Promise<void>;
 };
 
-export const useCartStore = create<CartState>()(
-  persist(
-    (set, get) => ({
-      cart: [],
-      // Add product to cart (or update quantity if already exists)
-      addToCart: (item) => {
-        const existing = get().cart;
-        const itemIndex = existing.findIndex((p) => p.id === item.id);
+export const useCartStore = create<CartState>((set) => ({
+  cart: [],
 
-        let updatedCart;
-        if (itemIndex > -1) {
-          updatedCart = [...existing];
-          updatedCart[itemIndex] = {
-            ...updatedCart[itemIndex]!,
-            quantity: updatedCart[itemIndex]!.quantity + 1,
-          };
-        } else {
-          updatedCart = [...existing, { ...item, quantity: 1 }];
-        }
+  fetchCart: async (userId) => {
+    const res = await axios.get(`/carts/user/${userId}`);
+    set({ cart: res.data });
+  },
 
-        set({ cart: updatedCart });
-      },
+  addToCart: async (item) => {
+    const { userId } = item;
+    const res = await axios.post(`/carts`, {
+      userId,
+      products: [item],
+    });
+    set({ cart: res.data.data.products }); // Adjust this if backend response differs
+  },
 
-      //clear all cart items
-      clearCart: () => set({ cart: [] }),
+  clearCart: async (userId) => {
+    await axios.delete(`/carts/${userId}`);
+    set({ cart: [] });
+  },
 
-      // Change quanity of Product
-      updateQuantity: (id, newQuantity) => {
-        const cart = get().cart;
-        const updatedCart = cart.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        );
-        set({ cart: updatedCart });
-      },
-    }),
-    { name: "cart-storage" }
-  )
-);
+  updateQuantity: async (userId, productId, newQuantity) => {
+    const res = await axios.put(`/carts/${userId}`, {
+      productId,
+      quantity: newQuantity,
+    });
+    set({ cart: res.data.products });
+  },
+}));

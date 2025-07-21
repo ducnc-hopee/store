@@ -5,21 +5,38 @@ import PageNotFound from "@/pages/PageNotFound";
 import type { TProduct } from "@/types/product";
 import CircleIconButton from "../ProductRowPage/CircleIconButton";
 import { useCartStore } from "@/gobalStates/useCartStore";
+import React, {useState} from "react";
 
 type TProductDetailsProps = {
   data: TProduct | null;
+  userId: string;
+  selectedColor?: string | null;
 };
 
-const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
+const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
   const addToCart = useCartStore((state) => state.addToCart);
-  
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
   if (!data) return <PageNotFound />;
 
   const handleAddToCart = () => {
-    const cartItem = { ...data, quantity: 1 };
+    if (!data) return;
+
+    const product = {
+      id: data.id,
+      name: data.name,
+      price: data.discountedPrice, // use correct price field
+      quantity: 1,
+      image: data.image,
+    };
+
+    const cartItem = {
+      userId: userId,
+      products: [product],
+    };
+
     addToCart(cartItem);
     alert("Added to cart!");
-
   };
 
   return (
@@ -54,6 +71,21 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data }) => {
         </div>
 
         <h2 className="text-navy-blue font-semibold pb-1">Color</h2>
+
+        {data.colors && data.colors.length > 0 && (
+          <div className="flex gap-2 pb-3">
+            {data.colors.map((color) => (
+              <button
+                key={color}
+                onClick={()=> setSelectedColor(color)}
+                className={`w-6 h-6 rounded-full border transition-transform duration-150 ${selectedColor === color ? "border-black scale-110" : "border-gray-300"}`}
+                style={{ backgroundColor: color }}
+                title={color}
+              />
+            ))}
+          </div>
+        )}
+
         <p className="text-gray font-medium pb-4">{data.description}</p>
 
         <div className="flex items-center gap-4 pb-6">
