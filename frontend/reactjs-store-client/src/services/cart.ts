@@ -1,7 +1,7 @@
 import type { TCartItem } from "@/types/cartItem";
 import axios from "axios";
 
-
+const baseURL = "http://localhost:8765";
 
 export const getCart = async (): Promise<TCartItem[]> => {
   const response = await axios.get("/mock/cartData.json");
@@ -16,4 +16,16 @@ export const getCartItem = async (id: string): Promise<TCartItem> => {
     throw new Error(`Product with id ${id} not found`);
   }
   return product;
+};
+
+export const getUserCart = async () => {
+  const token = localStorage.getItem("token");
+
+  const res = await axios.get(`${baseURL}/carts/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
 };

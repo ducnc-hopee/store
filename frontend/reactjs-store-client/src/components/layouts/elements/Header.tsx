@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/Button";
 import { ChevronDown } from "lucide-react";
 import { routes } from "@/routes/config";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { HeaderItem } from "@/components/ui/HeaderItem";
+import { useUserStore } from "@/store/userStore";
 
 function Header() {
   const { pathname } = useLocation();
+  const { user, clearUser } = useUserStore();
+
+  const handleLogout = () => {
+    clearUser();
+  };
 
   return (
     <div className="text-white">
@@ -30,10 +36,19 @@ function Header() {
           <Button variant="ghost" className="text-white gap-1 cursor-pointer">
             USD <ChevronDown className="h-4 w-4" />
           </Button>
-
-          <HeaderItem href={routes.account} isActive={pathname === routes.account}>
-            Login <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] ml-1 mb-1 font-bold" />
-          </HeaderItem>
+          {user ? (
+            <div className="flex items-center gap-2 text-white">
+              <Link to="/account">{user}</Link>
+              <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] mb-1 font-bold" />
+              <Button variant="ghost" className="text-white text-sm p-1" onClick={handleLogout}>
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <HeaderItem href={routes.account} isActive={pathname === routes.account}>
+              Login <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] ml-1 mb-1 font-bold" />
+            </HeaderItem>
+          )}
 
           <HeaderItem href={routes.cart} isActive={pathname === routes.cart}>
             Wishlist <Icon icon="uil:heart-alt" className="inline-block ml-1 mb-1  w-[16px] h-[16px]" />

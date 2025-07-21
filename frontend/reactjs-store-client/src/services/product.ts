@@ -10,8 +10,8 @@ export const getProducts = async (): Promise<TProduct[]> => {
 
 export const getProductDetail = async (id: string): Promise<TProduct> => {
   const response = await axios.get<TProductResponse>(`${baseURL}/products/${id}`);
-  const data = fromProductResponseAPIToProduct(response.data)
+  const data = fromProductResponseAPIToProduct(response.data);
   console.log(data);
-  
+
   return data;
 };

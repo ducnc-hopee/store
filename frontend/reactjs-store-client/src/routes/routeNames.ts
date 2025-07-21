@@ -11,4 +11,5 @@ export const routeNames = {
   contact: "Contact Us",
   notFound: "404 Not Found",
   faq: "FAQ",
+  createAcc: "Create Account"
 };

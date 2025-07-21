@@ -14,6 +14,7 @@ import Blog from "@/pages/Blog";
 import SingleBlog from "@/pages/SingleBlog";
 import ContactUs from "@/pages/ContactUs";
 import faq from "@/pages/faq";
+import CreateAccount from "@/pages/CreateAccount";
 
 export const routerConfig = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const routerConfig = createBrowserRouter([
       {
         path: routes.faq,
         Component: faq,
+      },
+      {
+        path: routes.createAcc,
+        Component: CreateAccount
       },
       {
         path: "*",

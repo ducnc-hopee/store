@@ -14,7 +14,9 @@ export const Banner = () => {
   const isAbout = useMatch(routes.about);
   const isContact = useMatch(routes.contact);
   const isFaq = useMatch(routes.faq);
+  const isCreateAcc = useMatch(routes.createAcc);
   const isNotFound = useMatch(routes.notFound);
+
 
   const bannerName = useMemo(() => {
     if (isProduct) return routeNames.product;
@@ -27,9 +29,10 @@ export const Banner = () => {
     if (isAbout) return routeNames.about;
     if (isContact) return routeNames.contact;
     if (isFaq) return routeNames.faq;
+    if (isCreateAcc) return routeNames.createAcc;
     if (isNotFound) return routeNames.notFound;
     return "";
-  }, [isProduct, isProductDetail, isCart, isOrderStatus, isAccount, isBlog, isSingleBlog, isAbout, isContact, isNotFound, isFaq]);
+  }, [isProduct, isProductDetail, isCart, isOrderStatus, isAccount, isBlog, isSingleBlog, isAbout, isContact, isNotFound, isFaq, isCreateAcc]);
 
   return (
     <div className="w-full h-[286px] bg-off-white flex items-center justify-start px-58 py-10">

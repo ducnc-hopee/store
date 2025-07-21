@@ -12,4 +12,5 @@ export const routes = {
   contact: "/contact",
   notFound: "*",
   faq: "/faq",
+  createAcc: "/createAccount"
 };
