@@ -1,78 +1,102 @@
 const Cart = require("../model/cart");
+const product = require("../model/product");
+const user = require("../model/user");
 
-module.exports.getAllCarts = (req, res) => {
+module.exports.getCartByUserId = (req, res) => {
+  const userId = req.params.userid;
   const limit = Number(req.query.limit) || 0;
   const sort = req.query.sort == "desc" ? -1 : 1;
-  const startDate = req.query.startdate || new Date("1970-1-1");
-  const endDate = req.query.enddate || new Date();
 
-  console.log(startDate, endDate);
-
-  Cart.find({
-    date: { $gte: new Date(startDate), $lt: new Date(endDate) },
-  })
-    .limit(limit)
-    .sort({ createdAt: sort })
-    .then((carts) => {
-      res.json(carts);
-    })
-    .catch((err) => console.log(err));
-};
-
-module.exports.getCartsbyUserid = (req, res) => {
-  const userId = req.params.userid;
-  const startDate = req.query.startdate || new Date("1970-1-1");
-  const endDate = req.query.enddate || new Date();
-
-  console.log(startDate, endDate);
   Cart.find({
     userId,
   })
-    .then((carts) => {
-      res.json(carts);
+    .limit(limit)
+    .sort({ createdAt: sort })
+    .then(async (carts) => {
+      const productRs = await Promise.allSettled(
+        carts.map(
+          async ({
+            productId,
+            userId,
+            _id,
+            quantity,
+            $__,
+            isNew,
+            $locals,
+            $op,
+            _doc,
+            $init,
+            ...rest
+          }) => {
+            try {
+              const p = await product.findOne({ _id: productId });
+              return {
+                _id,
+                userId,
+                quantity,
+                product: p,
+                ...rest,
+              };
+            } catch (error) {
+              throw new Error("Product Not found");
+            }
+          }
+        )
+      );
+      const rs = productRs.flatMap((item) =>
+        item.status == "rejected" ? [] : item.value
+      );
+      res.json(rs);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.json([]);
+    });
 };
 
-module.exports.getSingleCart = (req, res) => {
-  const id = req.params.id;
-  Cart.findOne({
-    id,
-  })
-    .select("-_id -products._id")
-    .then((cart) => res.json(cart))
-    .catch((err) => console.log(err));
-};
-
-module.exports.addCart = async (req, res) => {
+module.exports.addProductIntoCart = async (req, res) => {
   try {
-    const { userId, products } = req.body;
+    const { userId, productId, quantity = 1 } = req.body;
 
-    if (!userId || !Array.isArray(products)) {
-      return res.status(400).json({
+    if (!userId) {
+      return res.status(403).json({
         status: "error",
-        message: "Missing or invalid required fields (userId or products).",
+        message: "Please login!",
       });
     }
 
-    const existingCart = await Cart.findOne({ userId });
+    const existingUser = await user.findOne({ _id: userId });
+    if (!existingUser) {
+      return res.status(404).json({
+        status: "error",
+        message: "User is not found",
+      });
+    }
+    const existingProduct = await product.findOne({ _id: productId });
+    if (!existingProduct) {
+      return res.status(404).json({
+        status: "error",
+        message: "Product is not found",
+      });
+    }
 
-    let savedCart;
+    const existingCart = await Cart.findOne({ userId, productId });
+
     if (existingCart) {
-      // Update existing cart (replace products, or you can merge logic here)
-      existingCart.products = products;
-      existingCart.date = new Date();
-      savedCart = await existingCart.save();
-    } else {
-      const newCart = new Cart({
-        id,
-        userId,
-        products,
-        date: new Date(), // or you can allow date to come from req.body
+      existingCart.quantity = existingCart.quantity + quantity;
+      existingCart.save();
+      return res.status(200).json({
+        status: "success",
+        message: "Update Cart successfully",
+        data: existingCart,
       });
-
-      savedCart = await newCart.save();
     }
+
+    const newCart = new Cart({
+      userId,
+      productId,
+      quantity,
+    });
+    const savedCart = await newCart.save();
 
     return res.status(201).json({
       status: "success",
@@ -89,39 +113,34 @@ module.exports.addCart = async (req, res) => {
   }
 };
 
-module.exports.editCart = async (req, res) => {
+module.exports.editCartQuantity = async (req, res) => {
   try {
-    const userId = req.params.id; // assumes PUT /cart/:id
-    const { id: productId, quantity } = req.body;
+    const { quantity } = req.body;
 
-    if (!userId || !productId || typeof quantity !== "number") {
-      return res.status(400).json({
-        status: "error",
-        message: "Missing userId, productId, or quantity.",
-      });
-    }
-
-    const cart = await Cart.findOne({ userId });
-    if (!cart) {
+    const existCart = await Cart.findOne({ _id: req.params.id });
+    if (!existCart) {
       return res
         .status(404)
         .json({ status: "error", message: "Cart not found" });
     }
 
-    const productIndex = cart.products.findIndex(
-      (item) => item.productId === productId
-    );
-
-    if (productIndex === -1) {
-      return res
-        .status(404)
-        .json({ status: "error", message: "Product not in cart" });
+    if (typeof quantity !== "number") {
+      return res.status(400).json({
+        status: "error",
+        message: "Missing quantity.",
+      });
     }
 
-    cart.products[productIndex].quantity = quantity;
-    cart.date = new Date();
+    if (quantity < 1) {
+      return res.status(400).json({
+        status: "error",
+        message: "quantity is larger than 0",
+      });
+    }
 
-    const updatedCart = await cart.save();
+    existCart.quantity = quantity;
+
+    const updatedCart = await existCart.save();
 
     res.status(200).json({
       status: "success",
@@ -136,7 +155,7 @@ module.exports.editCart = async (req, res) => {
   }
 };
 
-module.exports.deleteCart = async (req, res) => {
+module.exports.deleteCartByUserId = async (req, res) => {
   try {
     const userId = req.params.userid;
 
@@ -154,13 +173,41 @@ module.exports.deleteCart = async (req, res) => {
         .json({ status: "error", message: "No cart items found to delete" });
     }
 
-
     res.status(200).json({
       status: "success",
       message: "Cart deleted successfully",
     });
   } catch (error) {
-    console.error("Error deleting cart:", error.message);
+    res.status(500).json({ status: "error", message: "Failed to delete cart" });
+  }
+};
+
+module.exports.deleteCart = async (req, res) => {
+  try {
+    const cartId = req.params.id;
+
+    if (!cartId) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "Cart ID required" });
+    }
+
+    Cart.findOneAndDelete({
+      _id: req.params.id,
+    })
+      .then((cart) => {
+        res.json(cart);
+      })
+      .catch((err) => {
+        console.log("?");
+
+        return res
+          .status(404)
+          .json({ status: "error", message: "Cart is not found" });
+      });
+  } catch (error) {
+    console.log("?");
+
     res.status(500).json({ status: "error", message: "Failed to delete cart" });
   }
 };

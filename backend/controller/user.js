@@ -1,5 +1,13 @@
 const User = require("../model/user");
 
+const getUserInfo = (user) => {
+  return {
+    _id: user._id,
+    username: user.username,
+    email: user.email,
+  };
+};
+
 module.exports.getAllUser = (req, res) => {
   const limit = Number(req.query.limit) || 0;
   const sort = req.query.sort == "desc" ? -1 : 1;
@@ -8,9 +16,11 @@ module.exports.getAllUser = (req, res) => {
     .limit(limit)
     .sort({ createdAt: sort })
     .then((users) => {
-      res.json(users);
+      res.json(users.map(getUserInfo));
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.json([]);
+    });
 };
 
 module.exports.getUser = (req, res) => {
@@ -20,9 +30,13 @@ module.exports.getUser = (req, res) => {
     _id: id,
   })
     .then((user) => {
-      res.json(user);
+      res.json(getUserInfo(user));
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.status(404).json({
+        message: "User not found",
+      });
+    });
 };
 
 module.exports.addUser = async (req, res) => {
@@ -48,7 +62,7 @@ module.exports.addUser = async (req, res) => {
 
       return res.status(201).json({
         status: "success",
-        data: user,
+        data: getUserInfo(user),
       });
     } catch (err) {
       return res.status(500).json({
@@ -71,7 +85,7 @@ module.exports.editUser = (req, res) => {
       { ...req.body, updatedAt: Date.now() }
     )
       .then((user) => {
-        res.json(user);
+        res.json(getUserInfo(user));
       })
       .catch((err) => console.log(err));
   }
@@ -88,7 +102,7 @@ module.exports.deleteUser = (req, res) => {
       _id: req.params.id,
     })
       .then((user) => {
-        res.json(user);
+        res.json(getUserInfo(user));
       })
       .catch((err) => console.log(err));
   }

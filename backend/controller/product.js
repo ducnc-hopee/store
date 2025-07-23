@@ -9,21 +9,23 @@ module.exports.getAllProducts = (req, res) => {
     .then((products) => {
       res.json(products);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.json([]);
+    });
 };
 
 module.exports.getFiltersOptions = async (req, res) => {
-	const allProducts = await Product.find().populate('categoryId');
+  const allProducts = await Product.find().populate("categoryId");
   const categoriesMap = new Map();
   const brandsMap = new Map();
   const colorsMap = new Map();
   allProducts.forEach((product) => {
     if (product.categoryId && product.categoryId.name) {
-			categoriesMap.set(
-				product.categoryId.name,
-				(categoriesMap.get(product.categoryId.name) || 0) + 1
-			);
-		}
+      categoriesMap.set(
+        product.categoryId.name,
+        (categoriesMap.get(product.categoryId.name) || 0) + 1
+      );
+    }
     if (product.brand) {
       brandsMap.set(product.brand, (brandsMap.get(product.brand) || 0) + 1);
     }
@@ -34,11 +36,15 @@ module.exports.getFiltersOptions = async (req, res) => {
     }
   });
 
-	const toArrayObject = (map) => {
-		return Array.from(map.entries()).map(([name, count]) => ({ name, count }));
-	}
+  const toArrayObject = (map) => {
+    return Array.from(map.entries()).map(([name, count]) => ({ name, count }));
+  };
 
-  res.json({ categories: toArrayObject(categoriesMap), brands: toArrayObject(brandsMap), colors: toArrayObject(colorsMap) });
+  res.json({
+    categories: toArrayObject(categoriesMap),
+    brands: toArrayObject(brandsMap),
+    colors: toArrayObject(colorsMap),
+  });
 };
 
 module.exports.getProduct = (req, res) => {
@@ -50,7 +56,12 @@ module.exports.getProduct = (req, res) => {
     .then((product) => {
       res.json(product);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      return res.status(404).json({
+        status: "error",
+        message: "product is not found",
+      });
+    });
 };
 
 module.exports.getProductsInCategory = (req, res) => {
@@ -66,7 +77,9 @@ module.exports.getProductsInCategory = (req, res) => {
     .then((products) => {
       res.json(products);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.json([]);
+    });
 };
 
 module.exports.addProduct = async (req, res) => {
@@ -106,7 +119,12 @@ module.exports.editProduct = (req, res) => {
       .then((product) => {
         res.json(product);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        return res.status(500).json({
+          status: "error",
+          message: err.message,
+        });
+      });
   }
 };
 
