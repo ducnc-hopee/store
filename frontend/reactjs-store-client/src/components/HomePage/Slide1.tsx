@@ -1,35 +1,44 @@
-import sofaImg from '/images/sofa.png';
-import lampImg from '/images/lamp.png';
-import { Button } from '../ui/Button';
-import { Link } from 'react-router-dom';
+import sofaImg from "/images/sofa.png";
+import lampImg from "/images/lamp.png";
+import { Button } from "../ui/Button";
+import { Link } from "react-router-dom";
 
 function Slide1() {
   return (
-    <div className="relative h-[764px] bg-off-white overflow-hidden mb-10">
-      <img src={lampImg} alt="Lamp" className="absolute w-[387px] h-[387px] left-[-50px] object-contain z-0" />
+    <div className="h-[764px] bg-off-white overflow-hidden mb-10">
+      <img src={lampImg} alt="Lamp" className="absolute w-[387px] h-[387px] left-[70px] object-contain z-0" />
 
-      <section className="flex items-center h-full w-full z-10 ml-60">
-        <div className="max-w-xl space-y-6">
-          <p className="text-pink font-bold text-base">Best Furniture For Your Castle....</p>
+      <section className="flex items-center z-10">
+        <div className="ml-[378px]">
+          <p className="text-pink font-bold text-[16px] mb-[12px]">Best Furniture For Your Castle....</p>
 
-          <h1 className="text-[40px] md:text-[48px] font-bold leading-tight text-black">New Furniture Collection Trends in 2020</h1>
+          <h1 className="w-[644px] text-[53px] font-bold text-black mb-[12px]">New Furniture Collection Trends in 2020</h1>
 
-          <p className="text-gray font-bold text-sm md:text-base">
+          <p className="text-gray font-bold text-base w-[559px] mb-[27px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
           </p>
 
-          <Button className="bg-pink text-white hover:bg-pink-600 transition-all px-6 py-3 text-base font-medium"><Link to="/product">Shop Now</Link></Button>
+          <Button className="bg-pink text-white hover:bg-pink-600 text-[17px] font-semibold w-[163px] h-[50px] rounded-[2px]">
+            <Link to="/product">Shop Now</Link>
+          </Button>
         </div>
-        <div className="relative w-[654px] h-[654px] shrink-0 left-10">
-          <div className="absolute left-[500px] w-[136px] h-[138px] rounded-[28%_72%_49%_51%/64%_38%_62%_36%] bg-[#00C1FE] z-[1000] flex items-center justify-center text-white font-bold text-[32px] pl-9">
-            <h1>50% OFF</h1>
+        <div className="relative w-[706px] h-[689px] shrink-0">
+          <div
+            className="absolute left-[547px] top-[94px] w-[136px] h-[138px] z-[1000] flex flex-col items-center justify-center text-white font-bold text-[20px] leading-[1] bg-[#00C1FE]"
+            style={{
+              borderRadius: "37% 63% 53% 47% / 59% 53% 47% 41% ",
+            }}
+          >
+            <h1 className="text-[35px] font-bold">50%</h1>
+            <h1 className="text-[35px] font-bold">off</h1>
           </div>
-          <div className="absolute top-[-20px] left-[20px] w-[638px] h-[638px] rounded-full bg-[rgba(236,210,250,0.35)] z-0" />
-          <div className="absolute top-[30px] left-[-30px] w-[638px] h-[638px] rounded-full bg-[rgba(236,210,250,0.35)] z-0" />
-          <img src={sofaImg} alt="Sofa" className="absolute top-0 left-0 w-[654px] h-[654px] max-w-none object-contain z-10" />
+
+          <div className="absolute top-[39px] left-[55px] w-[651px] h-[651px] rounded-full bg-[rgba(236,210,250,0.35)] z-0" />
+          <div className="absolute top-[80px] w-[648px] h-[648px] rounded-full bg-[rgba(236,210,250,0.35)] z-0" />
+          <img src={sofaImg} alt="Sofa" className="absolute top-[99px] left-0 w-[629px] h-[629px] max-w-none object-contain z-10" />
         </div>
       </section>
-      </div>
-)
+    </div>
+  );
 }
 export default Slide1;

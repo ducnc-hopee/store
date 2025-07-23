@@ -10,50 +10,54 @@ export const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 shadow-sm bg-white">
-      <div className="flex items-center gap-10">
-
+    <nav className="flex items-left justify-between px-[371px] bg-white h-[40px] mt-[19px] mb-[22px]">
+      <div className="flex items-center">
         <HeaderItem href={routes.home} isActive={pathname === routes.home}>
-          <h1 className="font-bold text-3xl text-navy-blue ml-50">Hekto</h1>
+          <h1 className="font-bold text-[34px] text-navy-blue py-[3px] mr-[88px]">Hekto</h1>
         </HeaderItem>
 
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-[35px]">
           <li>
             <NavItem href={routes.home} isActive={pathname === routes.home}>
-              Home
+              <div className="flex flex-row">
+                <p className="text-[16px] ">Home</p>
+                <Icon icon="akar-icons:chevron-down" className="inline-block w-[12px] h-[11.5px] my-[4px] ml-[2px]" />
+              </div>
+            </NavItem>
+          </li>
+          <li>
+            <NavItem href={routes.home} isActive={pathname === routes.home}>
+              <p className="text-[16px] font-normal">Pages</p>
             </NavItem>
           </li>
           <li>
             <NavItem href={routes.product} isActive={pathname === routes.product}>
-              Products
+              <p className="text-[16px] font-normal">Products</p>
             </NavItem>
           </li>
           <li>
             <NavItem href={routes.blog} isActive={pathname === routes.blog}>
-              Blog
+              <p className="text-[16px] font-normal">Blog</p>
             </NavItem>
           </li>
           <li>
-            <NavItem href={routes.cart} isActive={pathname === routes.cart}>
-              Shop
+            <NavItem href={routes.product} isActive={pathname === routes.product}>
+              <p className="text-[16px] font-normal ">Shop</p>
             </NavItem>
           </li>
           <li>
             <NavItem href={routes.contact} isActive={pathname === routes.contact}>
-              Contact
+              <p className="text-[16px] font-normal ">Contact</p>
             </NavItem>
           </li>
         </ul>
       </div>
-
-      <div className="flex items-center gap-0 overflow-hidden rounded-lg border border-gray-300 mr-[200px]">
-        <Input
-          type="search"
-          placeholder="Search"
-          className="w-48 text-sm px-3 py-2 border-none focus:outline-none focus:ring-0 focus:border-none rounded-none"
-        />
-        <Button className="bg-pink p-2 px-4 rounded-none">
-          <Icon icon="uil:search" className="w-5 h-5 text-white" />
+      <div className="flex flex-row w-[317px]">
+        <div className="flex items-center gap-0 overflow-hidden border-2 border-[#E7E6EF]">
+          <Input type="search" className="w-[266px] border-none focus:outline-none focus:ring-0 focus:border-none rounded-none" />
+        </div>
+        <Button className="bg-pink w-[51px] h-[40px] rounded-none flex items-center justify-center p-0">
+          <Icon icon="uil:search" className="text-white w-[28px] h-[28px] text-[28px]" />
         </Button>
       </div>
     </nav>

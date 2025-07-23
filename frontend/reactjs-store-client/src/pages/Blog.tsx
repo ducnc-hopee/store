@@ -21,11 +21,11 @@ function Blog() {
 
   return (
     <div>
-      <div className="grid grid-cols-10 gap-4 mx-55 mt-20">
-        <div className="col-span-7">
+      <div className="flex flex-row ml-[371px] mt-[125px]">
+        <div className="">
           <BlogList data={blogs} />
         </div>
-        <div className="col-span-3 ml-10">
+        <div className="ml-[58px]">
           <SideBar data={blogs} products={products} />
         </div>
       </div>

@@ -9,18 +9,26 @@ type TProductListProps = {
 export const HomeProducts: React.FC<TProductListProps> = ({ data }) => {
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-navy-blue font-bold text-[42px]">Latest Products</h1>
+      <h1 className="text-navy-blue font-bold text-[42px] w-[338px] mt-[64px]">Latest Products</h1>
       <Tabs defaultValue="overview">
-        <TabsList className="flex gap-10 justify-center text-[18px] py-5 text-navy-blue mx-auto">
-          <TabsTrigger value="overview">New Arrival</TabsTrigger>
-          <TabsTrigger value="features">Best Seller</TabsTrigger>
-          <TabsTrigger value="pricing">Featured</TabsTrigger>
-          <TabsTrigger value="reviews">Special Offer</TabsTrigger>
+        <TabsList className="flex justify-center items-center text-[18px] text-navy-blue p-0 mt-[19px] ml-[671px] gap-[58px] mr-[722px] mb-[64px]">
+          <TabsTrigger value="overview" className="flex items-center justify-center whitespace-nowrap p-0">
+            New Arrival
+          </TabsTrigger>
+          <TabsTrigger value="features" className="flex items-center justify-center whitespace-nowrap p-0">
+            Best Seller
+          </TabsTrigger>
+          <TabsTrigger value="pricing" className="flex items-center justify-center whitespace-nowrap p-0 ">
+            Featured
+          </TabsTrigger>
+          <TabsTrigger value="reviews" className="flex items-center justify-center whitespace-nowrap p-0">
+            Special Offer
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview">
-          <div className="p-4 bg-muted rounded-md text-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-30">
+          <div className="mb-[115px]">
+            <div className="grid grid-cols-4 gap-[12px] mx-[162px] w-[1596px] h-[1258px]">
               {data.slice(0, 8).map((product) => (
                 <ProductItem key={product.id} data={product} />
               ))}
@@ -29,26 +37,20 @@ export const HomeProducts: React.FC<TProductListProps> = ({ data }) => {
         </TabsContent>
 
         <TabsContent value="features">
-          <div className="p-4 bg-muted rounded-md text-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-30">
-             Best Seller
-            </div>
+          <div className="mb-[115px]">
+            <div className="mx-[162px] w-[1596px] h-[1258px]">Best Seller</div>
           </div>
         </TabsContent>
 
         <TabsContent value="pricing">
-          <div className="p-4 bg-muted rounded-md text-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-30">
-              Featured
-            </div>
+          <div className="mb-[115px]">
+            <div className="mx-[162px] w-[1596px] h-[1258px]">Featured</div>
           </div>
         </TabsContent>
 
         <TabsContent value="reviews">
-          <div className="p-4 bg-muted rounded-md text-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-30">
-              Special Offer
-            </div>
+          <div className="mb-[115px]">
+            <div className="mx-[162px] w-[1596px] h-[1258px]">Special Offer</div>
           </div>
         </TabsContent>
       </Tabs>

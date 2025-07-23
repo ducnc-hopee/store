@@ -24,25 +24,25 @@ function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center shadow-xl w-[544px] h-[474px] pt-5 mt-30 border border-gray-200">
-        <h1 className="text-[32px] font-bold">Login</h1>
-        <p className="text-gray">Please login using account details below.</p>
+      <div className="flex flex-col items-center w-[544px] shadow-xl h-[474px] mt-[120px] border border-gray-200">
+        <h1 className="text-[32px] font-bold mt-[50px] h-[32px] mb-[7px]">Login</h1>
+        <p className="text-gray text-[17px] mb-[37px] h-[20px]">Please login using account details below.</p>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full px-15 pt-5">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-[432px]">
             <FormField
               control={form.control}
               name="email"
               rules={{ required: "Email is required" }}
               render={({ field }) => (
                 <FormItem>
-                  <div className="flex flex-row border-2 rounded border-gray items-center gap-2 px-2">
+                  <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[23px] h-[52px]">
                     <FormControl>
                       <Input
                         type="email"
                         placeholder="Email Address"
                         {...field}
-                        className="h-[52px] border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                        className="h-[19px] border-none shadow-none text-[16px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                       />
                     </FormControl>
                   </div>
@@ -56,13 +56,13 @@ function LoginPage() {
               rules={{ required: "Password is required" }}
               render={({ field }) => (
                 <FormItem>
-                  <div className="flex flex-row border-2 rounded border-gray items-center px-2">
+                  <div className="flex flex-row border-2 rounded border-[#C2C5E1] items-center mb-[13px] h-[52px]">
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="Password"
                         {...field}
-                        className="h-[52px] border-none shadow-none text-[15px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
+                        className="h-[19px] border-none shadow-none text-[16px] placeholder-gray focus-visible:outline-none focus-visible:none focus-visible:ring-0"
                       />
                     </FormControl>
                   </div>
@@ -70,13 +70,13 @@ function LoginPage() {
                 </FormItem>
               )}
             />
-            <Button variant="ghost" className="flex flex-row justify-start p-0 hover:text-navy-blue text-gray text-[17px]">
+            <Button variant="ghost" className="h-[20px] flex flex-row justify-start p-0 hover:text-navy-blue text-gray text-[17px] mb-[23px]">
               Forgot your password?
             </Button>
-            <Button type="submit" className="w-full h-[47px] font-bold">
+            <Button type="submit" className="w-full h-[47px] font-bold mb-[28px] ">
               Sign in
             </Button>
-            <Button variant="ghost" className="w-full flex flex-row items-center justify-center p-0 hover:text-navy-blue text-gray text-[17px]">
+            <Button variant="ghost" className="h-[20px] w-full flex flex-row items-center justify-center p-0 hover:text-navy-blue text-gray text-[17px] mb-[50px]">
               Don’t have an Account? Create account
             </Button>
           </form>

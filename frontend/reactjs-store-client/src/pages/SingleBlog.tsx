@@ -31,14 +31,14 @@ function SingleBlog() {
 
   return (
     <div>
-      <div className="grid grid-cols-10 gap-4 mx-55 mt-30">
-        <div className="col-span-7">
+      <div className="flex flex-row ml-[371px] mt-[125px]">
+        <div className="flex flex-col">
           <BlogDetails blog={blog} products={products} blogs={blogs} />
-          <div className="pr-15">
+          <div className="mt-[105px]">
             <CommentForm />
           </div>
         </div>
-        <div className="col-span-3 ml-10">
+        <div className="flex ml-[30px]">
           <SideBar data={blogs} products={products} />
         </div>
       </div>
