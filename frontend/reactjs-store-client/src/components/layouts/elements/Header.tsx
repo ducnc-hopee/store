@@ -8,11 +8,7 @@ import { useUserStore } from "@/store/userStore";
 
 function Header() {
   const { pathname } = useLocation();
-  const { user, clearUser } = useUserStore();
-
-  const handleLogout = () => {
-    clearUser();
-  };
+  const { user } = useUserStore();
 
   return (
     <div className="text-white">
@@ -38,10 +34,7 @@ function Header() {
           {user ? (
             <div className="flex items-center gap-2 text-white">
               <Link to="/account">{user}</Link>
-              <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] mb-1 font-bold" />
-              <Button variant="ghost" className="text-white text-sm p-1" onClick={handleLogout}>
-                Logout
-              </Button>
+              <Icon icon="carbon:user" className="inline-block  w-[16px] h-[16px] mb-1 font-bold mr-[16px]" />
             </div>
           ) : (
             <HeaderItem href={routes.account} isActive={pathname === routes.account}>
