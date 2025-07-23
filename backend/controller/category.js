@@ -7,7 +7,9 @@ module.exports.getAllCategories = (req, res) => {
     .then((categories) => {
       res.json(categories);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.json([]);
+    });
 };
 
 // get category by id
@@ -17,7 +19,12 @@ module.exports.getCategoryById = (req, res) => {
     .then((category) => {
       res.json(category);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.status(404).json({
+        status: "error",
+        message: "data is undefined",
+      });
+    });
 };
 
 // create category
