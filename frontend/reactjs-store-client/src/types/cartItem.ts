@@ -1,20 +1,21 @@
 export type TCartProduct = {
-    id: string;
-    name: string;
-    color?: string;
-    size?: string;
-    price: number;
-    quantity: number;
-    image: string;
-  };
+  id: number | string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  quantity: number;
+};
 
-export type TCartItem={
-  userId: string;
+export type TCartItem = {
+  id: number;
+  userId: number;
   products: TCartProduct[];
-}
+};
 
 export type TCartProductResponse = {
-  product_id: string;
+  product_id: number;
   title: string;
   color?: string;
   size?: string;
@@ -24,21 +25,23 @@ export type TCartProductResponse = {
 };
 
 export type TCartItemResponse = {
-  user_id: string;
+  user_id: number;
+  id: number;
   products: TCartProductResponse[];
 };
 
 export const fromCartResponseToCartItem = (cart: TCartItemResponse): TCartItem => {
   return {
-      userId: cart.user_id,
-      products: cart.products.map((product: TCartProductResponse) => ({
+    id:cart.id,
+    userId: cart.user_id,
+    products: cart.products.map((product: TCartProductResponse) => ({
       id: product.product_id,
-      name: product.title,
-      color: product.color,
-      size: product.size,
+      title: product.title,
       price: product.price,
-      quantity: product.quantity,
+      description: "", // Add empty string or map if available
+      category: "",    // Add empty string or map if available
       image: product.image,
+      quantity: product.quantity,
     })),
   };
 };

@@ -19,6 +19,6 @@ router.put("/:id", cart.editCart);
 router.patch("/:id", cart.editCart);
 
 // Delete a cart
-router.delete("/:id", cart.deleteCart);
+router.delete("/user/:userid", cart.deleteCart);
 
 module.exports = router;

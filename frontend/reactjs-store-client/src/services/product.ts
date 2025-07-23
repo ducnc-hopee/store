@@ -15,3 +15,4 @@ export const getProductDetail = async (id: string): Promise<TProduct> => {
   
   return data;
 };
+

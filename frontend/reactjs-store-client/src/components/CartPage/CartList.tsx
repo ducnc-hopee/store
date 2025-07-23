@@ -6,7 +6,7 @@ import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TCartListProps = {
   data: TCartItem[];
-  userId:string;
+  userId:number;
 };
 
 export const CartList: React.FC<TCartListProps> = ({ data, userId}) => {

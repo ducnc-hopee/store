@@ -4,7 +4,7 @@ import { Button } from "../ui/Button";
 import { useCartStore } from "@/gobalStates/useCartStore";
 
 type TCartItemProps = {
-  data: TCartProduct & { userId: string };
+  data: TCartProduct & { userId: number };
 };
 
 const CartItem: React.FC<TCartItemProps> = ({ data }) => {
@@ -14,7 +14,7 @@ const CartItem: React.FC<TCartItemProps> = ({ data }) => {
 
   useEffect(() => {
     setTotal(Number(data.price) * Number(quantity));
-    updateQuantity(data.userId, data.id, quantity);
+    updateQuantity(data.userId, Number(data.id), quantity);
   }, [quantity]);
 
   const handleIncrement = () => setQuantity((q) => q + 1);
@@ -23,11 +23,11 @@ const CartItem: React.FC<TCartItemProps> = ({ data }) => {
   return (
     <div className="grid gap-x-10 grid-cols-5 py-5 border-b-2 border-[#E1E1E4] items-center">
       <div className="col-span-2 flex items-center gap-2">
-        <img className="w-[80px] h-[80px] object-cover rounded" src={data.image} alt={data.name} />
+        <img className="w-[80px] h-[80px] object-cover rounded" src={data.image} alt={data.title} />
         <div className="flex flex-col justify-start text-left gap-1">
-          <h1 className="font-bold text-navy-blue">{data.name}</h1>
-          <p className="text-sm text-gray">Color: {data.color}</p>
-          <p className="text-sm text-gray">Size: {data.size}</p>
+          <h1 className="font-bold text-navy-blue">{data.title}</h1>
+          <p className="text-sm text-gray">Color:</p>
+          <p className="text-sm text-gray">Size:</p> 
         </div>
       </div>
 

@@ -12,7 +12,7 @@ function ProductDetail() {
   const [data, setData] = useState<TProduct | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<TProduct[]>([]);
 
-  const userId="temp-user-id";
+  const userId= -73078176;
   
 
   useEffect(() => {

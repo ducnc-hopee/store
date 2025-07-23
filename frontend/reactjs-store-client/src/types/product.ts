@@ -1,5 +1,5 @@
 export type TProduct = {
-  id: string;
+  id: number;
   name: string;
   price: number;
   discountedPrice: number;
@@ -12,7 +12,7 @@ export type TProduct = {
 };
 
 export type TProductResponse = {
-  _id: string;
+  _id: number;
   title: string;
   price: number;
   discountPercentage: number;

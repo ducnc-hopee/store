@@ -9,7 +9,7 @@ import React, {useState} from "react";
 
 type TProductDetailsProps = {
   data: TProduct | null;
-  userId: string;
+  userId: number;
   selectedColor?: string | null;
 };
 
@@ -21,21 +21,25 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
 
   const handleAddToCart = () => {
     if (!data) return;
+    console.log(data);
 
     const product = {
       id: data.id,
-      name: data.name,
+      title: data.name,
       price: data.discountedPrice, // use correct price field
-      quantity: 1,
+      description: data.description,
+      category: data.category,
       image: data.image,
+      quantity: 1,
     };
 
-    const cartItem = {
-      userId: userId,
-      products: [product],
-    };
+    // const cartItem = {
+    //   id:-83807727,
+    //   userId: userId,
+    //   products: [product],
+    // };
 
-    addToCart(cartItem);
+    addToCart({ ...product, userId });
     alert("Added to cart!");
   };
 

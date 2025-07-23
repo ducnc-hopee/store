@@ -65,6 +65,7 @@ module.exports.addCart = async (req, res) => {
       savedCart = await existingCart.save();
     } else {
       const newCart = new Cart({
+        id,
         userId,
         products,
         date: new Date(), // or you can allow date to come from req.body
@@ -137,7 +138,7 @@ module.exports.editCart = async (req, res) => {
 
 module.exports.deleteCart = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userId = req.params.userid;
 
     if (!userId) {
       return res
@@ -145,13 +146,14 @@ module.exports.deleteCart = async (req, res) => {
         .json({ status: "error", message: "User ID required" });
     }
 
-    const result = await Cart.findOneAndDelete({ userId });
+    const result = await Cart.deleteMany({ userId });
 
-    if (!result) {
+    if (result.deletedCount === 0) {
       return res
         .status(404)
-        .json({ status: "error", message: "Cart not found" });
+        .json({ status: "error", message: "No cart items found to delete" });
     }
+
 
     res.status(200).json({
       status: "success",
