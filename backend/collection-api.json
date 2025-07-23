@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7d4f7f7a-a5a8-4dcc-a036-e64f6384f8c9",
-		"name": "FakeStoreAPI",
+		"name": "Store API",
 		"description": "A free fake API for testing and prototyping e-commerce applications.\n\nContact Support:\n Email: support@fakestoreapi.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29153798"
@@ -54,10 +54,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/products/:id",
+											"raw": "http://localhost:8765/products/:id",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8765",
 											"path": [
 												"products",
 												":id"
@@ -136,7 +138,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n        \"colors\": [\n            \"red\",\n            \"blue\"\n        ],\n        \"title\": \"fugiat ut\",\n        \"price\": 1000,\n        \"discountPercentage\": 0.1,\n        \"description\": \"exercitation labore occaecat anim\",\n        \"code\": \"Jean0001\",\n        \"categoryId\": \"6861243b9dcb15d7ca92e794\",\n        \"image\": \"http://qNMi.ulFpGfrKmS4FdAhCOzjh+P7BDraZwaggCfMfSqEUMH6tLBXEuKncFlQ1ieu7itVW8ZMS\",\n        \"rating\": 5\n    \"color\": red\n }",
+									"raw": "{\n        \"colors\": [\n            \"red\",\n            \"blue\"\n        ],\n        \"title\": \"fugiat ut\",\n        \"price\": 1000,\n        \"discountPercentage\": 0.1,\n        \"description\": \"exercitation labore occaecat anim\",\n        \"code\": \"Jean0001\",\n        \"categoryId\": \"6861243b9dcb15d7ca92e794\",\n        \"image\": \"http://qNMi.ulFpGfrKmS4FdAhCOzjh+P7BDraZwaggCfMfSqEUMH6tLBXEuKncFlQ1ieu7itVW8ZMS\",\n        \"rating\": 5\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -176,10 +178,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/products/:id",
+											"raw": "http://localhost:8765/products/:id",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8765",
 											"path": [
 												"products",
 												":id"
@@ -275,10 +279,12 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{baseUrl}}/products/:id",
+											"raw": "http://localhost:8765/products/:id",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8765",
 											"path": [
 												"products",
 												":id"
@@ -376,10 +382,12 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/products",
+									"raw": "http://localhost:8765/products",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8765",
 									"path": [
 										"products"
 									]
@@ -481,10 +489,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/products",
+									"raw": "http://localhost:8765/products",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8765",
 									"path": [
 										"products"
 									]
@@ -564,10 +574,116 @@
 			"name": "carts",
 			"item": [
 				{
-					"name": "{id}",
+					"name": "by user",
 					"item": [
 						{
-							"name": "Get a single cart",
+							"name": "Delete carts by user",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/carts/user/:userid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"carts",
+										"user",
+										":userid"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userid",
+											"value": "68808705bf3f8e7b68128873"
+										}
+									]
+								},
+								"description": "Delete a specific cart by ID."
+							},
+							"response": [
+								{
+									"name": "Cart deleted successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8765/carts/:id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8765",
+											"path": [
+												"carts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "90704682",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Bad request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/carts/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"carts",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "90704682",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Get Cart By User",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -577,19 +693,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/carts/:id",
+									"raw": "{{baseUrl}}/carts/user/:userid",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"carts",
-										":id"
+										"user",
+										":userid"
 									],
 									"variable": [
 										{
-											"key": "id",
-											"value": "90704682",
-											"description": "(Required) "
+											"key": "userid",
+											"value": "68808705bf3f8e7b68128873"
 										}
 									]
 								},
@@ -607,10 +723,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/carts/:id",
+											"raw": "http://localhost:8765/carts/:id",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8765",
 											"path": [
 												"carts",
 												":id"
@@ -672,16 +790,161 @@
 									"body": ""
 								}
 							]
+						}
+					]
+				},
+				{
+					"name": "Delete a cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "688089f84d2dbbdde3a68d38"
+								}
+							]
+						},
+						"description": "Delete a specific cart by ID."
+					},
+					"response": [
+						{
+							"name": "Cart deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8765/carts/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8765",
+									"path": [
+										"carts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "90704682",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
 						},
 						{
-							"name": "Update a cart",
-							"request": {
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/carts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"carts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "90704682",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update cart quantity",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68808705bf3f8e7b68128873"
+								}
+							]
+						},
+						"description": "Update an existing cart by ID."
+					},
+					"response": [
+						{
+							"name": "Cart updated successfully",
+							"originalRequest": {
 								"method": "PUT",
 								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -689,7 +952,53 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"id\": -83807727,\n  \"userId\": -73078176,\n  \"products\": [\n    {\n      \"id\": 80718751,\n      \"title\": \"ad\",\n      \"price\": 96834679.80478838,\n      \"description\": \"nulla ipsum sed in\",\n      \"category\": \"dolore pariatur non\",\n      \"image\": \"http://WsuOshlogLeDYmZqiUygZhRWAgaxSLek.cgr.mk9f9KJLYntWKUDlPOoNb1JY4fYRKfA2g5Wd5S-mkBJ.pnayj++0Q9jJ\"\n    },\n    {\n      \"id\": -24212031,\n      \"title\": \"esse ullamco consectetur quis elit\",\n      \"price\": -18025174.942011327,\n      \"description\": \"deserunt sit fugiat mollit aute\",\n      \"category\": \"dolor eu dolore\",\n      \"image\": \"https://vdgBRjiGEpOPtvVnHPP.rmuIHLmkBCfNnOee1l69oWvcur17PYCxhiHSes6sCYXrKtQsji,\"\n    }\n  ]\n}",
+									"raw": "{\n  \"id\": 96393487,\n  \"userId\": 53580025,\n  \"products\": [\n    {\n      \"id\": 762693,\n      \"title\": \"fugiat dolor\",\n      \"price\": -45152313.90122989,\n      \"description\": \"Lorem sed cillum\",\n      \"category\": \"ut\",\n      \"image\": \"https://atpzrvVnotZeaIPDTSCSpFLq.lzlcy.5raBDZt7qrGyD2mmg2jZlBCBiWy1iPxwgGqwMKeGcrh\"\n    },\n    {\n      \"id\": -43296302,\n      \"title\": \"ad veniam\",\n      \"price\": -96805380.9997337,\n      \"description\": \"dolore non aliquip\",\n      \"category\": \"irure voluptate\",\n      \"image\": \"https://RxBUFDWJmKETawbt.kesljpq7pgXN2rtljg03pYJqo86ENT9tXl7U0ntzH,F4ehvKDS8Kqy8dHWt.Ss.3iPmL3HNT-awL75P0\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8765/carts/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8765",
+									"path": [
+										"carts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "90704682",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": -83807727,\n  \"userId\": -73078176,\n  \"products\": [\n    {\n      \"id\": 80718751,\n      \"title\": \"ad\",\n      \"price\": 96834679.80478838,\n      \"description\": \"nulla ipsum sed in\",\n      \"category\": \"dolore pariatur non\",\n      \"image\": \"http://WsuOshlogLeDYmZqiUygZhRWAgaxSLek.cgr.mk9f9KJLYntWKUDlPOoNb1JY4fYRKfA2g5Wd5S-mkBJ.pnayj++0Q9jJ\"\n    },\n    {\n      \"id\": -24212031,\n      \"title\": \"esse ullamco consectetur quis elit\",\n      \"price\": -18025174.942011327,\n      \"description\": \"deserunt sit fugiat mollit aute\",\n      \"category\": \"dolor eu dolore\",\n      \"image\": \"https://vdgBRjiGEpOPtvVnHPP.rmuIHLmkBCfNnOee1l69oWvcur17PYCxhiHSes6sCYXrKtQsji,\"\n    }\n  ]\n}"
+						},
+						{
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 96393487,\n  \"userId\": 53580025,\n  \"products\": [\n    {\n      \"id\": 762693,\n      \"title\": \"fugiat dolor\",\n      \"price\": -45152313.90122989,\n      \"description\": \"Lorem sed cillum\",\n      \"category\": \"ut\",\n      \"image\": \"https://atpzrvVnotZeaIPDTSCSpFLq.lzlcy.5raBDZt7qrGyD2mmg2jZlBCBiWy1iPxwgGqwMKeGcrh\"\n    },\n    {\n      \"id\": -43296302,\n      \"title\": \"ad veniam\",\n      \"price\": -96805380.9997337,\n      \"description\": \"dolore non aliquip\",\n      \"category\": \"irure voluptate\",\n      \"image\": \"https://RxBUFDWJmKETawbt.kesljpq7pgXN2rtljg03pYJqo86ENT9tXl7U0ntzH,F4ehvKDS8Kqy8dHWt.Ss.3iPmL3HNT-awL75P0\"\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -712,271 +1021,6 @@
 											"description": "(Required) "
 										}
 									]
-								},
-								"description": "Update an existing cart by ID."
-							},
-							"response": [
-								{
-									"name": "Cart updated successfully",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"id\": 96393487,\n  \"userId\": 53580025,\n  \"products\": [\n    {\n      \"id\": 762693,\n      \"title\": \"fugiat dolor\",\n      \"price\": -45152313.90122989,\n      \"description\": \"Lorem sed cillum\",\n      \"category\": \"ut\",\n      \"image\": \"https://atpzrvVnotZeaIPDTSCSpFLq.lzlcy.5raBDZt7qrGyD2mmg2jZlBCBiWy1iPxwgGqwMKeGcrh\"\n    },\n    {\n      \"id\": -43296302,\n      \"title\": \"ad veniam\",\n      \"price\": -96805380.9997337,\n      \"description\": \"dolore non aliquip\",\n      \"category\": \"irure voluptate\",\n      \"image\": \"https://RxBUFDWJmKETawbt.kesljpq7pgXN2rtljg03pYJqo86ENT9tXl7U0ntzH,F4ehvKDS8Kqy8dHWt.Ss.3iPmL3HNT-awL75P0\"\n    }\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/carts/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"carts",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "90704682",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n  \"id\": -83807727,\n  \"userId\": -73078176,\n  \"products\": [\n    {\n      \"id\": 80718751,\n      \"title\": \"ad\",\n      \"price\": 96834679.80478838,\n      \"description\": \"nulla ipsum sed in\",\n      \"category\": \"dolore pariatur non\",\n      \"image\": \"http://WsuOshlogLeDYmZqiUygZhRWAgaxSLek.cgr.mk9f9KJLYntWKUDlPOoNb1JY4fYRKfA2g5Wd5S-mkBJ.pnayj++0Q9jJ\"\n    },\n    {\n      \"id\": -24212031,\n      \"title\": \"esse ullamco consectetur quis elit\",\n      \"price\": -18025174.942011327,\n      \"description\": \"deserunt sit fugiat mollit aute\",\n      \"category\": \"dolor eu dolore\",\n      \"image\": \"https://vdgBRjiGEpOPtvVnHPP.rmuIHLmkBCfNnOee1l69oWvcur17PYCxhiHSes6sCYXrKtQsji,\"\n    }\n  ]\n}"
-								},
-								{
-									"name": "Bad request",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"id\": 96393487,\n  \"userId\": 53580025,\n  \"products\": [\n    {\n      \"id\": 762693,\n      \"title\": \"fugiat dolor\",\n      \"price\": -45152313.90122989,\n      \"description\": \"Lorem sed cillum\",\n      \"category\": \"ut\",\n      \"image\": \"https://atpzrvVnotZeaIPDTSCSpFLq.lzlcy.5raBDZt7qrGyD2mmg2jZlBCBiWy1iPxwgGqwMKeGcrh\"\n    },\n    {\n      \"id\": -43296302,\n      \"title\": \"ad veniam\",\n      \"price\": -96805380.9997337,\n      \"description\": \"dolore non aliquip\",\n      \"category\": \"irure voluptate\",\n      \"image\": \"https://RxBUFDWJmKETawbt.kesljpq7pgXN2rtljg03pYJqo86ENT9tXl7U0ntzH,F4ehvKDS8Kqy8dHWt.Ss.3iPmL3HNT-awL75P0\"\n    }\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/carts/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"carts",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "90704682",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Delete a cart",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/carts/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"carts",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "90704682",
-											"description": "(Required) "
-										}
-									]
-								},
-								"description": "Delete a specific cart by ID."
-							},
-							"response": [
-								{
-									"name": "Cart deleted successfully",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/carts/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"carts",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "90704682",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								},
-								{
-									"name": "Bad request",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/carts/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"carts",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "90704682",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "Get all carts",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/carts",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"carts"
-							]
-						},
-						"description": "Retrieve a list of all available carts."
-					},
-					"response": [
-						{
-							"name": "Success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/carts",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"carts"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "[\n  {\n    \"id\": 44093755,\n    \"userId\": 34624903,\n    \"products\": [\n      {\n        \"id\": 43479329,\n        \"title\": \"fugiat commodo\",\n        \"price\": -91730409.26715256,\n        \"description\": \"veniam laboris reprehenderit fugiat ex\",\n        \"category\": \"sint ullamco\",\n        \"image\": \"https://ufsjMQWuobajjsJMeadjNlv.zkwrAiukNvrg857FrLL9hy32yiUgsbdnHGfD39EsgQtirxse-pw35\"\n      },\n      {\n        \"id\": -44077916,\n        \"title\": \"dolore\",\n        \"price\": -88561001.14327216,\n        \"description\": \"ad\",\n        \"category\": \"dolore\",\n        \"image\": \"http://ZbCdl.ueDjM2vFGuFK0NdBc+0BunZ0z08N1GL6.Yqv4CHX,pHnZsATyuMI9FekVApxRRHG+W2bClR1rV\"\n      }\n    ]\n  },\n  {\n    \"id\": -87412039,\n    \"userId\": 18234715,\n    \"products\": [\n      {\n        \"id\": -97038885,\n        \"title\": \"veniam velit eu fugiat\",\n        \"price\": -84195649.29287264,\n        \"description\": \"id anim commodo velit\",\n        \"category\": \"amet pariatur repre\",\n        \"image\": \"http://YxVkUdC.rqOLgvvpmU1PtuO6PuxR\"\n      },\n      {\n        \"id\": -73771865,\n        \"title\": \"aliqua elit Duis irure ea\",\n        \"price\": -50655201.09653692,\n        \"description\": \"ipsum eiusmod\",\n        \"category\": \"officia dolor consectetur\",\n        \"image\": \"https://zMehZvbJKliUW.guzj98fAVgdTaJ22lSEyHLAl.rmcputyH\"\n      }\n    ]\n  }\n]"
-						},
-						{
-							"name": "Bad request",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/carts",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"carts"
-									]
 								}
 							},
 							"status": "Bad Request",
@@ -994,7 +1038,7 @@
 					]
 				},
 				{
-					"name": "Add a new cart",
+					"name": "Add product into cart",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1009,7 +1053,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": -83807727,\n  \"userId\": -73078176,\n  \"products\": [\n    {\n      \"id\": 80718751,\n      \"title\": \"ad\",\n      \"price\": 96834679.80478838,\n      \"description\": \"nulla ipsum sed in\",\n      \"category\": \"dolore pariatur non\",\n      \"image\": \"http://WsuOshlogLeDYmZqiUygZhRWAgaxSLek.cgr.mk9f9KJLYntWKUDlPOoNb1JY4fYRKfA2g5Wd5S-mkBJ.pnayj++0Q9jJ\"\n    },\n    {\n      \"id\": -24212031,\n      \"title\": \"esse ullamco consectetur quis elit\",\n      \"price\": -18025174.942011327,\n      \"description\": \"deserunt sit fugiat mollit aute\",\n      \"category\": \"dolor eu dolore\",\n      \"image\": \"https://vdgBRjiGEpOPtvVnHPP.rmuIHLmkBCfNnOee1l69oWvcur17PYCxhiHSes6sCYXrKtQsji,\"\n    }\n  ]\n}",
+							"raw": "{\n  \"userId\": \"68808705bf3f8e7b68128873\",\n  \"productId\": \"68809bbea659218691afe646\",\n  \"quantity\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1048,10 +1092,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/carts",
+									"raw": "http://localhost:8765/carts",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8765",
 									"path": [
 										"carts"
 									]
@@ -1126,13 +1172,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/users/687498c799a5eb4daba10c16",
+									"raw": "{{baseUrl}}/users/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
-										"687498c799a5eb4daba10c16"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68808705bf3f8e7b68128873"
+										}
 									]
 								},
 								"description": "Retrieve details of a specific user by ID."
@@ -1149,10 +1201,12 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/users/:id",
+											"raw": "http://localhost:8765/users/:id",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8765",
 											"path": [
 												"users",
 												":id"
@@ -1239,13 +1293,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/users/687498c799a5eb4daba10c16",
+									"raw": "{{baseUrl}}/users/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"users",
-										"687498c799a5eb4daba10c16"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68808705bf3f8e7b68128873"
+										}
 									]
 								},
 								"description": "Update an existing user by ID."
@@ -1363,8 +1423,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "90704682",
-											"description": "(Required) "
+											"value": "68808705bf3f8e7b68128873"
 										}
 									]
 								},
@@ -1700,6 +1759,111 @@
 			]
 		},
 		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"68808705bf3f8e7b68128873\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/get-by-user/:userid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"get-by-user",
+								":userid"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userid",
+									"value": "68808705bf3f8e7b68128873"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/:orderid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								":orderid"
+							],
+							"variable": [
+								{
+									"key": "orderid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Login",
 			"request": {
 				"method": "POST",
@@ -1715,7 +1879,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"do officia in\",\n  \"password\": \"aliquip\"\n}",
+					"raw": "{\n  \"username\": \"magna veli\",\n  \"password\": \"elit velit ea r\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
