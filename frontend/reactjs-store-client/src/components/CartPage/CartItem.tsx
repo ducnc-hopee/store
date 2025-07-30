@@ -9,20 +9,23 @@ type TCartItemProps = {
   product: TProduct
 };
 
+
+
 const CartItem: React.FC<TCartItemProps> = ({cartItem, product }) => {
   const [quantity, setQuantity] = useState(Number(cartItem.quantity));
-  const [total, setTotal] = useState(product.price*quantity);
+  const [total, setTotal] = useState(product.discountedPrice*quantity);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
+  
 
   useEffect(() => {
-    setTotal(product.price * Number(quantity));
+    setTotal(product.discountedPrice * Number(quantity));
     updateQuantity( cartItem._id,cartItem.userId, product.id ,quantity);
    
   }, [quantity]);
 
   const handleIncrement = () => setQuantity((q) => q + 1);
   const handleDecrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
-  
+
   return (
     <div className="grid gap-x-10 grid-cols-5 py-5 border-b-2 border-[#E1E1E4] items-center">
       <div className="col-span-2 flex items-center gap-2">
@@ -34,7 +37,7 @@ const CartItem: React.FC<TCartItemProps> = ({cartItem, product }) => {
         </div>
       </div>
 
-      <div className="flex justify-center font-medium text-gray-800">${product.price}</div>
+      <div className="flex justify-center font-medium text-gray-800">${product.discountedPrice}</div>
 
       <div className="flex items-center">
         <Button className="w-5 h-8 bg-[#E7E7EF] text-[#6B6C72] text-xl font-bold hover:bg-[#dcdce3]" onClick={handleDecrement}>

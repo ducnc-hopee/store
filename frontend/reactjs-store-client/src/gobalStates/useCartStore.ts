@@ -9,10 +9,24 @@ type CartState = {
   fetchCart: (userId: string) => Promise<void>;
   addToCart: (item: TCartItem) => Promise<void>;
   clearCart: (userId: string) => Promise<void>;
-  updateQuantity: (CartItemId: string, userId: string, productId: string, newQuantity: number) => Promise<void>;
+  updateQuantity: (cartItemId: string, userId: string, productId: string, newQuantity: number) => Promise<void>;
 };
 
-
+const transformCartData = (data: any[]): TCartItemWithProduct[] => {
+  return data.map((item: any) => ({
+    item: {
+      _id: item._id,
+      userId: item.userId,
+      quantity: item.quantity,
+      selectedColor: item.selectedColor ?? null,
+      productId: item.productId,
+    },
+    product: {
+      ...item.product, // Assuming product data is nested within the item
+      discountedPrice: item.product.price*(1-(item.product.discountPercentage ?? 0)) // Handle discounted price if available
+    }
+  }));
+};
 
 export const useCartStore = create<CartState>((set) => ({
   cart: [],
@@ -20,23 +34,13 @@ export const useCartStore = create<CartState>((set) => ({
   fetchCart: async (userId: string) => {
     try {
       const response = await axios.get(`${baseURL}/carts/user/${userId}`);
-       console.log("Fetched Cart:", response.data); 
-          
-      const transformedCart = response.data.map((item: any) => ({
-      item: {
-        _id: item._id,
-        userId: item.userId,
-        quantity: item.quantity,
-        productId: item.productId,
-      },
-      product: item.product, // assuming you used `.populate("productId")` on backend
-    }));
-      set({ cart: transformedCart});
+      const transformedCart = transformCartData(response.data);
+      set({ cart: transformedCart });
     } catch (err) {
       console.error("Failed to fetch cart:", err);
     }
   },
-  
+
   addToCart: async (item: TCartItem) => {
     try {
       const cartPayload = {
@@ -47,7 +51,8 @@ export const useCartStore = create<CartState>((set) => ({
       };
       await axios.post(`${baseURL}/carts`, cartPayload);
       const updated = await axios.get(`${baseURL}/carts/user/${item.userId}`);
-      set({ cart: updated.data });
+      const transformed = transformCartData(updated.data);
+      set({ cart: transformed });
     } catch (err) {
       console.error("Failed to add to cart:", err);
     }
@@ -68,8 +73,9 @@ export const useCartStore = create<CartState>((set) => ({
         productId,
         quantity: newQuantity,
       });
-      const updated = await axios.get(`${baseURL}/cart/user/${userId}`);
-      set({ cart: updated.data });
+      const updated = await axios.get(`${baseURL}/carts/user/${userId}`);
+      const transformed = transformCartData(updated.data);
+      set({ cart: transformed });
     } catch (err) {
       console.error("Failed to update quantity:", err);
     }

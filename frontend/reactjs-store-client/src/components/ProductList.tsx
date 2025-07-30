@@ -14,7 +14,7 @@ type TProductListProps = {
 export const ProductList: React.FC<TProductListProps> = ({ data, viewType, sort, selectedRatings, selectedPrices }) => {
   // Apply filters
   const filteredData = data.filter((product) => {
-    const rating = parseInt(product.rating || "0");
+    const rating = parseInt(String(product.rating || "0"));
     const price = product.discountedPrice;
 
     const matchesRating = selectedRatings.length === 0 || selectedRatings.includes(rating);

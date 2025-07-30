@@ -10,7 +10,7 @@ type TCartTotalsProps = {
 
 const CartTotals: React.FC<TCartTotalsProps> = ({ items = [] }) => {
   const total = items.reduce((sum, item) => {
-  const price = item?.product?.price ?? 0;
+  const price = item?.product?.discountedPrice ?? 0;
   const quantity = item?.item?.quantity ?? 0;
   return sum + price * quantity;
 }, 0);
@@ -28,7 +28,7 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ items = [] }) => {
                 <span>
                   {item.product.title} (x{item.item.quantity})
                 </span>
-                <span>${(Number(item.product.price) * Number(item.item.quantity)).toFixed(2)}</span>
+                <span>${(Number(item.product.discountedPrice) * Number(item.item.quantity)).toFixed(2)}</span>
               </div>
             ): null
           )}

@@ -42,6 +42,7 @@ const productSchema = new schema(
     },
     colors: [String],
     brand: String,
+
   },
   {
     strict: false,

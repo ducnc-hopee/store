@@ -12,7 +12,7 @@ export const BlogRelatedProduct: React.FC<TProductItemProps> = ({ data }) => {
     <Linkable to={`/product/${data.id}`}>
       <img className="w-[270px] border border-gray-100 shadow-lg rounded-xl" src={data.image}></img>
       <div className="flex flex-row items-right py-5 justify-between px-1 ">
-        <h1 className="font-bold text-navy-blue text-[14px]">{data.name}</h1>
+        <h1 className="font-bold text-navy-blue text-[14px]">{data.title}</h1>
         <div className="flex text-yellow-500 w-[69px]">
           {[...Array(Number(data.rating))].map((_, i) => (
             <AiFillStar key={`fill-${i}`} />

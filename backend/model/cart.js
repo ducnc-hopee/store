@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-const cartSchema = new schema(
+const ema = new schema(
   {
     userId: {
       type: schema.Types.ObjectId,

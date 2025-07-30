@@ -28,10 +28,17 @@ export default function CartList() {
       </div>
 
       <div>
-        {cart.map((cartItem) =>
-          cartItem?.item && cartItem?.product ? <CartItem key={cartItem.item._id} cartItem={cartItem.item} product={cartItem.product} /> : null,
-        )}
+        {cart
+          ?.filter((cartItem) => cartItem?.item && cartItem?.product)
+          .map((cartItem) => (
+            <CartItem
+              key={cartItem.item._id}
+              cartItem={cartItem.item}
+              product={cartItem.product}
+            />
+          ))}
       </div>
+
 
       <div className="flex flex-row justify-between py-10">
         <Button onClick={handleUpdateCart}>Update Cart</Button>

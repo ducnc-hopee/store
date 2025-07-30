@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "./ui/input";
 import { SearchIcon } from "lucide-react";
-import { TabsTrigger, Tabs, TabsList, TabsContent } from "./ui/tabs";
+import { TabsTrigger, Tabs, TabsList} from "./ui/tabs";
 import type { TBlog } from "@/types/blog";
 import type { TProduct } from "@/types/product";
 import { Icon } from "@iconify/react";
@@ -116,7 +116,7 @@ const SideBar: React.FC<TSideBarProps> = ({ data, products }) => {
                 <li className="flex flex-col pb-5 gap-2" key={product.id}>
                   <img src={product.image} className="w-[126px] h-[80px]" />
                   <div>
-                    <h1 className="text-sm text-navy-blue text-center">{product.name}</h1>
+                    <h1 className="text-sm text-navy-blue text-center">{product.title}</h1>
                     <h1 className="text-[11px] text-off-purple text-center">{product.price}</h1>
                   </div>
                 </li>
