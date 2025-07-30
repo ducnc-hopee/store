@@ -13,7 +13,7 @@ export const getCart = async (): Promise<TCartItem[]> => {
 };
 
 // Get a specific item by ID
-export const getCartByUserId = async (userId: number): Promise<TCartItem> => {
+export const getCartByUserId = async (userId: string): Promise<TCartItem> => {
   const cartItems = await getCart();
   const userCart = cartItems.find((cart) => cart.userId === userId);
 

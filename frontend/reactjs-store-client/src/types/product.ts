@@ -1,18 +1,18 @@
 export type TProduct = {
-  id: number;
-  name: string;
+  id: string;
+  title: string;
   price: number;
   discountedPrice: number;
   category: string;
   description: string;
   image: string;
-  rating?: string;
+  rating: number;
   numRating: string;
   colors: string[];
 };
 
 export type TProductResponse = {
-  _id: number;
+  _id: string;
   title: string;
   price: number;
   discountPercentage: number;
@@ -29,13 +29,13 @@ export type TProductResponse = {
 export const fromProductResponseAPIToProduct = (product: TProductResponse): TProduct => {
   return {
     id: product._id,
-    name: product.title,
+    title: product.title,
     price: product.price,
     discountedPrice: (product.price *(1- product.discountPercentage)),
     category: product.categoryName,
     description: product.description,
     image: product.image,
-    rating: product.rating.toString(),
+    rating: product.rating,
     numRating: "123",
     colors: product.colors,
   };

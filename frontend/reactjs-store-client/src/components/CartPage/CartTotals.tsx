@@ -1,17 +1,20 @@
 import React from "react";
-import type { TCartProduct } from "@/types/cartItem";
-import { Icon } from "@iconify/react";
+import type { TCartItemWithProduct } from "@/types/cartItem";
 import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 type TCartTotalsProps = {
-  products: TCartProduct[];
+  items: TCartItemWithProduct[];
 };
 
-const CartTotals: React.FC<TCartTotalsProps> = ({ products }) => {
-  const total =  products.reduce((sum, item) => {
-    return sum + item.price * item.quantity;
-  }, 0);
+const CartTotals: React.FC<TCartTotalsProps> = ({ items = [] }) => {
+  const total = items.reduce((sum, item) => {
+  const price = item?.product?.price ?? 0;
+  const quantity = item?.item?.quantity ?? 0;
+  return sum + price * quantity;
+}, 0);
+
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -19,14 +22,16 @@ const CartTotals: React.FC<TCartTotalsProps> = ({ products }) => {
       <div className="bg-off-white w-[371px] border-transparent rounded-[3px] pt-[34px]">
         <div className="flex flex-col justify-between pb-4 border-b-2 border-[#E8E6F1] ml-[23px]">
           <span className="text-navy-blue">
-            {products.map((item) => (
-              <div key={item.id} className="flex justify-between text-sm text-navy-blue py-1">
+            {items.map((item) => 
+            item?.item && item?.product ?(
+              <div key={item.item._id} className="flex justify-between text-sm text-navy-blue py-1">
                 <span>
-                  {item.name} (x{item.quantity})
+                  {item.product.title} (x{item.item.quantity})
                 </span>
-                <span>${(Number(item.price) * Number(item.quantity)).toFixed(2)}</span>
+                <span>${(Number(item.product.price) * Number(item.item.quantity)).toFixed(2)}</span>
               </div>
-            ))}
+            ): null
+          )}
           </span>
           <div className="flex flex-row items-end justify-between py-1">
             <span className="font-semibold text-navy-blue">Subtotal</span>

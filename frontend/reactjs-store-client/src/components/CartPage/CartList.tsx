@@ -1,24 +1,21 @@
-import type { TCartItem } from "@/types/cartItem";
-import React from "react";
-import CartItem from "./CartItem";
 import { Button } from "../ui/Button";
+import CartItem from "./CartItem";
 import { useCartStore } from "@/gobalStates/useCartStore";
 
-type TCartListProps = {
-  data: TCartItem[];
-  userId:number;
-};
-
-export const CartList: React.FC<TCartListProps> = ({ data, userId}) => {
+export default function CartList() {
+  const cart = useCartStore((state) => state.cart); // Get cart from Zustan
   const clearCart = useCartStore((state) => state.clearCart);
+  const fetchCart = useCartStore((state) => state.fetchCart);
+  const userId = "6881a8adf936c7791d186ccb"; // Replace with actual user ID
 
-  const handleUpdateCart = () => {
-    alert("Cart updated! (Quantity is auto-synced as you adjust it.)");
+  const handleUpdateCart = async () => {
+    await fetchCart(userId);
+    alert("Cart updated!");
   };
 
-  const handleClearCart = () => {
-    
-    clearCart(userId);
+  const handleClearCart = async () => {
+    await clearCart(userId);
+    alert("Cart cleared!");
   };
 
   return (
@@ -31,12 +28,10 @@ export const CartList: React.FC<TCartListProps> = ({ data, userId}) => {
       </div>
 
       <div>
-        {data.map((cartItem) => 
-          cartItem.products.map((product) => (
-         <CartItem key={product.id} data={{ ...product, userId: cartItem.userId }} />
-          ))
-          )}
-          </div>
+        {cart.map((cartItem) =>
+          cartItem?.item && cartItem?.product ? <CartItem key={cartItem.item._id} cartItem={cartItem.item} product={cartItem.product} /> : null,
+        )}
+      </div>
 
       <div className="flex flex-row justify-between py-10">
         <Button onClick={handleUpdateCart}>Update Cart</Button>
@@ -44,4 +39,4 @@ export const CartList: React.FC<TCartListProps> = ({ data, userId}) => {
       </div>
     </div>
   );
-};
+}

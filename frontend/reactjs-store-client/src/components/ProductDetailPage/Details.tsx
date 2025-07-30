@@ -5,41 +5,35 @@ import PageNotFound from "@/pages/PageNotFound";
 import type { TProduct } from "@/types/product";
 import CircleIconButton from "../ProductRowPage/CircleIconButton";
 import { useCartStore } from "@/gobalStates/useCartStore";
-import React, {useState} from "react";
+import React, { useState } from "react";
+
 
 type TProductDetailsProps = {
   data: TProduct | null;
-  userId: number;
+  userId: string;
   selectedColor?: string | null;
 };
 
-const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
+const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId }) => {
   const addToCart = useCartStore((state) => state.addToCart);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
   if (!data) return <PageNotFound />;
 
   const handleAddToCart = () => {
-    if (!data) return;
+    if (!data || !selectedColor) return;
     console.log(data);
 
-    const product = {
-      id: data.id,
-      title: data.name,
-      price: data.discountedPrice, // use correct price field
-      description: data.description,
-      category: data.category,
-      image: data.image,
+    const cartItem = {
+      _id:"6881e7b977bf882199ce9315",
+      productId: data.id,
+      userId: userId,
       quantity: 1,
+      selectedColor: selectedColor,
     };
 
-    // const cartItem = {
-    //   id:-83807727,
-    //   userId: userId,
-    //   products: [product],
-    // };
-
-    addToCart({ ...product, userId });
+    addToCart(cartItem);
+     console.log(cartItem);
     alert("Added to cart!");
   };
 
@@ -55,7 +49,7 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
       </div>
 
       <div className="w-7/10 py-10 px-10">
-        <h1 className="text-[36px] text-navy-blue font-bold pb-2">{data.name}</h1>
+        <h1 className="text-[36px] text-navy-blue font-bold pb-2">{data.title}</h1>
 
         <div className="flex items-center pb-2">
           <div className="flex text-yellow-500">
@@ -81,7 +75,7 @@ const ProductDetails: React.FC<TProductDetailsProps> = ({ data, userId}) => {
             {data.colors.map((color) => (
               <button
                 key={color}
-                onClick={()=> setSelectedColor(color)}
+                onClick={() => setSelectedColor(color)}
                 className={`w-6 h-6 rounded-full border transition-transform duration-150 ${selectedColor === color ? "border-black scale-110" : "border-gray-300"}`}
                 style={{ backgroundColor: color }}
                 title={color}

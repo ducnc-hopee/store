@@ -1,77 +1,77 @@
 import { create } from "zustand";
-import type { TCartItem, TCartProduct } from "@/types/cartItem";
-// import axios from "axios";
+import type { TCartItemWithProduct, TCartItem } from "@/types/cartItem";
+import axios from "axios";
 
-// const baseURL = "http://localhost:8765";
+const baseURL = "http://localhost:8765";
 
 type CartState = {
-  cart: TCartItem[];
-  fetchCart: (userId: number) => Promise<void>;
-  addToCart: (item: TCartProduct & { userId: number }) => Promise<void>;
-  clearCart: (userId: number) => Promise<void>;
-  updateQuantity: (userId: number, productId: number, newQuantity: number) => Promise<void>;
+  cart: TCartItemWithProduct[];
+  fetchCart: (userId: string) => Promise<void>;
+  addToCart: (item: TCartItem) => Promise<void>;
+  clearCart: (userId: string) => Promise<void>;
+  updateQuantity: (CartItemId: string, userId: string, productId: string, newQuantity: number) => Promise<void>;
 };
 
-function getCartFromLocalStorage(userId: number) {
-  const cart = localStorage.getItem(`cart_user_${userId}`);
-  return cart ? JSON.parse(cart) : [];
-}
 
-function saveCartToLocalStorage(userId: number, cart: TCartItem[]) {
-  localStorage.setItem(`cart_user_${userId}`, JSON.stringify(cart));
-}
 
 export const useCartStore = create<CartState>((set) => ({
-  cart: [], // initially empty
+  cart: [],
 
-  fetchCart: async (userId: number) => {
-    const userCart = getCartFromLocalStorage(userId);
-    set({ cart: userCart });
-  },
-
-  addToCart: async (item: TCartProduct & {userId:number}) => {
-    const currentCart = getCartFromLocalStorage(item.userId);
-
-    let itemFound = false;
-
-    currentCart.forEach((cartItem: TCartItem) => {
-      cartItem.products.forEach((product: TCartProduct) => {
-        if (product.id === item.id) {
-          product.quantity += item.quantity ?? 1;
-          itemFound = true;
-        }
-      });
-    });
-
-    if (!itemFound) {
-      // Create a new cartItem structure if needed
-      const existingUserCart = currentCart.find((ci:TCartItem) => ci.userId === item.userId);
-      if (existingUserCart) {
-        existingUserCart.products.push(item);
-      } else {
-        currentCart.push({ userId: item.userId, products: [item] });
-      }
+  fetchCart: async (userId: string) => {
+    try {
+      const response = await axios.get(`${baseURL}/carts/user/${userId}`);
+       console.log("Fetched Cart:", response.data); 
+          
+      const transformedCart = response.data.map((item: any) => ({
+      item: {
+        _id: item._id,
+        userId: item.userId,
+        quantity: item.quantity,
+        productId: item.productId,
+      },
+      product: item.product, // assuming you used `.populate("productId")` on backend
+    }));
+      set({ cart: transformedCart});
+    } catch (err) {
+      console.error("Failed to fetch cart:", err);
     }
-
-    saveCartToLocalStorage(item.userId, currentCart);
-    set({ cart: currentCart });
+  },
+  
+  addToCart: async (item: TCartItem) => {
+    try {
+      const cartPayload = {
+        userId: item.userId,
+        productId: item.productId,
+        quantity: item.quantity || 1,
+        selectedColor: item.selectedColor,
+      };
+      await axios.post(`${baseURL}/carts`, cartPayload);
+      const updated = await axios.get(`${baseURL}/carts/user/${item.userId}`);
+      set({ cart: updated.data });
+    } catch (err) {
+      console.error("Failed to add to cart:", err);
+    }
   },
 
-  clearCart: async (userId) => {
-    localStorage.removeItem(`cart_user_${userId}`);
-    set({ cart: [] });
+  clearCart: async (userId: string) => {
+    try {
+      await axios.delete(`${baseURL}/carts/user/${userId}`);
+      set({ cart: [] });
+    } catch (err) {
+      console.error("Failed to clear cart:", err);
+    }
   },
 
-  updateQuantity: async (userId, productId, newQuantity) => {
-    const currentCart = getCartFromLocalStorage(userId);
-    currentCart.forEach((cartItem: TCartItem) => {
-      cartItem.products.forEach((product) => {
-        if (product.id === productId) {
-          product.quantity = newQuantity;
-        }
+  updateQuantity: async (cartItemId: string, userId: string, productId: string, newQuantity: number) => {
+    try {
+      await axios.put(`${baseURL}/carts/${cartItemId}`, {
+        productId,
+        quantity: newQuantity,
       });
-    });
-    saveCartToLocalStorage(userId, currentCart);
-    set({ cart: currentCart });
+      const updated = await axios.get(`${baseURL}/cart/user/${userId}`);
+      set({ cart: updated.data });
+    } catch (err) {
+      console.error("Failed to update quantity:", err);
+    }
   },
 }));

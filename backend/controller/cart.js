@@ -55,12 +55,13 @@ module.exports.getCartByUserId = (req, res) => {
 
 module.exports.addProductIntoCart = async (req, res) => {
   try {
-    const { userId, productId, quantity = 1 } = req.body;
+    const { userId, productId, quantity = 1,...rest } = req.body;
 
     if (!userId) {
       return res.status(403).json({
         status: "error",
         message: "Please login!",
+
       });
     }
 
@@ -95,6 +96,7 @@ module.exports.addProductIntoCart = async (req, res) => {
       userId,
       productId,
       quantity,
+      ...rest,
     });
     const savedCart = await newCart.save();
 

@@ -17,6 +17,11 @@ const cartSchema = new schema(
       type: Number,
       required: true,
     },
+     selectedColor: {
+      type: String,
+      default: null, // or required: true if you want to force it
+    },
+
   },
   { strict: false }
 );
